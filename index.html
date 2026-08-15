@@ -98,8 +98,7 @@ form{display:grid;gap:11px}.field label{display:block;font-size:13px;font-weight
   <div class="card">
     <form id="interestForm">
       <div class="field"><label>Your full name</label><input id="tenantName" required placeholder="e.g. John Doe"></div>
-      <div class="field"><label>Your phone number</label><input id="tenantPhone" type="tel" required placeholder="+256 700 000 000"></div>
-      <div class="field"><label>Your WhatsApp number</label><input id="tenantWhatsApp" type="tel" placeholder="+256 700 000 000"></div>
+      <div class="field"><label>Your contact number</label><input id="tenantPhone" type="tel" required placeholder="+256 700 000 000"></div>
       <div class="field"><label>Message</label><textarea id="tenantMessage" placeholder="I would like to view this property..."></textarea></div>
       <button class="btn primary" type="submit">Send Inquiry</button>
       <div id="interestMsg" class="message"></div>
@@ -251,18 +250,6 @@ function render(){
             <h3>${esc(x.title)}</h3>
             <div class="meta">${esc(x.location)} · ${x.beds} bedrooms · ${x.baths} bathrooms</div>
 
-            <div class="card-owner">
-              <strong>Owner details</strong>
-              <div>👤 ${esc(x.ownerName||"Property Owner")}</div>
-              <div>📞 ${esc(x.phone||"Not provided")}</div>
-              <div>💬 ${esc(x.whatsapp||x.phone||"Not provided")}</div>
-            </div>
-
-            <div class="contact-actions">
-              <a class="btn call" href="tel:${phone}">Call Owner</a>
-              <a class="btn whatsapp" href="https://wa.me/${wa}" target="_blank" rel="noopener">WhatsApp</a>
-            </div>
-
             <button class="btn gold" style="width:100%;margin-top:9px" onclick="openInterest(${x.id})">I’m Interested</button><button class="btn primary" style="width:100%;margin-top:9px" onclick="details(${x.id})">
               View Property
             </button>
@@ -290,15 +277,13 @@ function details(id){
       <p>${esc(x.description)}</p>
 
       <div class="ownerbox">
-        <strong>Owner details</strong>
+        <strong>Contact Owner</strong>
         <div>👤 ${esc(x.ownerName||"Property Owner")}</div>
-        <div>📞 Phone: ${esc(x.phone||"Not provided")}</div>
-        <div>💬 WhatsApp: ${esc(x.whatsapp||x.phone||"Not provided")}</div>
-      </div>
-
-      <div class="contact-actions">
-        <a class="btn call" href="tel:${phone}">Call Owner</a>
-        <a class="btn whatsapp" href="https://wa.me/${wa}" target="_blank" rel="noopener">WhatsApp</a>
+        <div>📞 ${esc(x.phone||"Not provided")}</div>
+        <div class="contact-actions">
+          <a class="btn call" href="tel:${phone}">Call</a>
+          <a class="btn whatsapp" href="https://wa.me/${wa}" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
       </div>
       <button class="btn gold" style="width:100%;margin-top:10px" onclick="openInterest(${x.id})">I’m Interested</button>
     </div>`;
@@ -392,7 +377,7 @@ document.getElementById("interestForm").addEventListener("submit",async e=>{
   try{
     const tenantName=document.getElementById("tenantName").value.trim();
     const tenantPhone=document.getElementById("tenantPhone").value.trim();
-    const tenantWhatsApp=document.getElementById("tenantWhatsApp").value.trim()||tenantPhone;
+    const tenantWhatsApp=tenantPhone;
     const message=document.getElementById("tenantMessage").value.trim();
     const {error}=await db.from("property_inquiries").insert({
       property_id:String(selectedProperty.id),
