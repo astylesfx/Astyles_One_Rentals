@@ -151,10 +151,31 @@ async function handleAuth(e){
  }catch(err){authMsg.textContent=err.message||"Authentication failed."}
 }
 async function ensureProfile(name){
- if(!currentUser)return;
- const {data:p}=await db.from("profiles").select("role,full_name,phone").eq("id",currentUser.id).maybeSingle();
- if(p){if(p.role!=="owner"&&p.role!=="admin")authMsg.textContent="Your account is not marked as an owner. Ask the app administrator to set your profile role to owner.";return p}
- return null;
+ if(!currentUser)return null;
+ const phone = (currentUser.user_metadata?.phone || "").trim();
+ const {data:p,error:readError}=await db.from("profiles").select("role,full_name,phone").eq("id",currentUser.id).maybeSingle();
+ if(readError) throw readError;
+
+ // This authentication screen is the owner's account flow.
+ // Create the owner profile automatically instead of requiring a manual role change.
+ if(!p){
+   const {data:created,error:createError}=await db.from("profiles")
+     .insert({id:currentUser.id,full_name:name||currentUser.user_metadata?.full_name||"",phone,role:"owner"})
+     .select("role,full_name,phone").single();
+   if(createError) throw createError;
+   return created;
+ }
+
+ if(p.role!=="owner"&&p.role!=="admin"){
+   // Existing accounts created through this owner flow are promoted to owner.
+   const {data:updated,error:updateError}=await db.from("profiles")
+     .update({role:"owner",full_name:p.full_name||name||currentUser.user_metadata?.full_name||"",phone:p.phone||phone})
+     .eq("id",currentUser.id)
+     .select("role,full_name,phone").single();
+   if(updateError) throw updateError;
+   return updated;
+ }
+ return p;
 }
 async function forgotPassword(){const email=authIdentifier.value.trim();if(!email){authMsg.textContent="Enter your email first.";return}authMsg.textContent="Sending reset email...";const {error}=await db.auth.resetPasswordForEmail(email,{redirectTo:location.origin});authMsg.textContent=error?(error.message||"Could not send reset email."):"Reset email sent. Check your inbox."}
 async function logoutOwner(){await db.auth.signOut();currentUser=null;show("welcome")}
@@ -196,7 +217,7 @@ async function publishProperty(e){
  e.preventDefault();msg.textContent="Publishing...";if(!currentUser){msg.textContent="Please log in first.";return}
  try{
   const {data:profile}=await db.from("profiles").select("role,full_name,phone").eq("id",currentUser.id).maybeSingle();
-  if(!profile||!["owner","admin"].includes(profile.role)){throw new Error("Your account is not an owner account. Set the profile role to owner first.")}
+  if(!profile||!["owner","admin"].includes(profile.role)){throw new Error("Owner profile is being set up. Please try Publish Property again.")}
   const {data:p,error}=await db.from("properties").insert({owner_id:currentUser.id,title:title.value.trim(),description:description.value.trim(),property_type:propertyType.value,price:Number(price.value),bedrooms:Number(bedrooms.value||0),bathrooms:Number(bathrooms.value||0),location:location.value.trim(),city:city.value.trim(),district:district.value.trim(),status:"available",owner_name:ownerName.value.trim(),owner_phone:normalizePhone(ownerPhone.value),owner_whatsapp:normalizePhone(ownerWhatsapp.value||ownerPhone.value)}).select().single();
   if(error)throw error;
   const file=photo.files[0];
