@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#081b3a">
-<title>ASTYLES ONE Rentals</title>
+<title>ASTYLES ONE Rentals — Latest</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#12213a}
 header{height:64px;background:#081b3a;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 16px;position:sticky;top:0;z-index:10}
@@ -77,9 +77,9 @@ form{display:grid;gap:11px}.field label{display:block;font-size:13px;font-weight
   <div class="head"><div><div class="eyebrow">ACCOUNT</div><h2 id="authTitle">Login</h2></div><button class="back" onclick="show('welcome')">Back</button></div>
   <div class="card authbox">
     <div class="auth-tabs"><button id="loginTab" class="active" type="button" onclick="setAuthMode('login')">Login</button><button id="signupTab" type="button" onclick="setAuthMode('signup')">Create Account</button></div>
-    <p class="auth-subtitle">Owner accounts use email and password. Phone SMS verification is not used.</p>
+    <p class="auth-subtitle">Use your email address or phone number. Phone SMS verification is not used.</p>
     <form id="authForm">
-      <div class="field"><label>Email address</label><input id="authIdentifier" type="email" required autocomplete="username" placeholder="you@example.com"></div>
+      <div class="field"><label>Email address</label><input id="authIdentifier" type="email" required autocomplete="username" placeholder="you@example.com or +256 7XXXXXXXX"></div>
       <div id="authNameField" class="field" style="display:none"><label>Full name</label><input id="authName" autocomplete="name"></div>
       <div class="field"><label>Password</label><div class="auth-input-wrap"><input id="authPassword" type="password" required minlength="6" autocomplete="current-password"><button class="showpass" type="button" onclick="togglePassword()">Show</button></div></div>
       <button id="forgotBtn" class="back" type="button" onclick="forgotPassword()">Forgot password?</button>
