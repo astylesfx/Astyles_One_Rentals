@@ -6,54 +6,31 @@
 <meta name="theme-color" content="#081b3a">
 <title>ASTYLES ONE Rentals</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#12213a}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#12213a}
 header{height:64px;background:#081b3a;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 16px;position:sticky;top:0;z-index:10}
-.brand{font-weight:900;letter-spacing:1.2px;font-size:19px}
-.topbtn{border:1px solid #e9bd3c;background:transparent;color:#fff;border-radius:10px;padding:9px 12px;font-weight:800}
-main{max-width:900px;margin:auto;padding:18px 15px 92px}
-.screen{display:none}.screen.active{display:block}
-.hero{min-height:72vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
-.eyebrow{color:#b88708;font-weight:900;letter-spacing:2px;font-size:12px}
-.hero h1{font-size:clamp(38px,10vw,62px);line-height:1.02;margin:12px 0}
-.hero p{color:#60708a;font-size:17px;max-width:520px}
-.actions{width:min(420px,100%);display:grid;gap:12px;margin-top:18px}
-.btn{border:0;border-radius:12px;padding:14px 16px;font-weight:900;font-size:16px;cursor:pointer;text-decoration:none;text-align:center}
-.primary{background:#0b2a5b;color:#fff}.gold{background:#e9bd3c;color:#13213a}
-.whatsapp{background:#168c4a;color:#fff}.call{background:#e8eef7;color:#0b2a5b}
-.head{display:flex;align-items:center;justify-content:space-between;margin:6px 0 18px}
-.head h2{font-size:30px;margin:3px 0}.back{border:0;background:transparent;color:#0b2a5b;font-weight:900}
-.filters{display:grid;grid-template-columns:1fr 170px;gap:9px;margin-bottom:15px}
-input,select,textarea{width:100%;padding:13px;border:1px solid #d4dce8;border-radius:11px;background:#fff;font:inherit}
-textarea{min-height:105px;resize:vertical}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
-.card{background:#fff;border:1px solid #e3e8f0;border-radius:16px;padding:15px;box-shadow:0 5px 18px rgba(16,33,59,.07)}
-.property{padding:0;overflow:hidden}.property img{width:100%;height:175px;object-fit:cover;display:block}
-.property .body{padding:15px}.price{font-size:20px;font-weight:900;color:#0b2a5b}
-.meta{font-size:14px;color:#66758a;margin:7px 0 13px}
-form{display:grid;gap:11px}.field label{display:block;font-size:13px;font-weight:800;margin-bottom:4px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.message{font-weight:800;color:#0b2a5b;min-height:20px}
-.preview{width:100%;max-height:230px;object-fit:cover;border-radius:12px;margin-top:7px;display:none}
-.detail-img{width:100%;max-height:360px;object-fit:cover;border-radius:16px}
-.ownerbox{background:#f5f8fc;border:1px solid #dce5f0;border-radius:12px;padding:13px;margin:14px 0}
-.ownerbox strong{display:block;font-size:16px;margin-bottom:5px}
-.ownerbox div{margin:3px 0}.contact-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
-.empty{padding:25px;text-align:center}
-.bottom{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #dce3ec;display:flex;justify-content:center;gap:4px;padding:8px 6px;z-index:20}
-.bottom button{border:0;background:transparent;color:#0b2a5b;font-weight:900;padding:9px 10px}
-.authbox{max-width:520px;margin:20px auto}
-.auth-subtitle{color:#66758a;font-size:14px;margin:-5px 0 15px}
-.auth-input-wrap{position:relative}
-.auth-input-wrap input{padding-right:78px}
+.brand{font-weight:900;letter-spacing:1.2px;font-size:19px}.topbtn{border:1px solid #e9bd3c;background:transparent;color:#fff;border-radius:10px;padding:9px 12px;font-weight:800}
+main{max-width:900px;margin:auto;padding:18px 15px 92px}.screen{display:none}.screen.active{display:block}
+.hero{min-height:72vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}.eyebrow{color:#b88708;font-weight:900;letter-spacing:2px;font-size:12px}
+.hero h1{font-size:clamp(38px,10vw,62px);line-height:1.02;margin:12px 0}.hero p{color:#60708a;font-size:17px;max-width:520px}
+.actions{width:min(420px,100%);display:grid;gap:12px;margin-top:18px}.btn{border:0;border-radius:12px;padding:14px 16px;font-weight:900;font-size:16px;cursor:pointer;text-decoration:none;text-align:center}
+.primary{background:#0b2a5b;color:#fff}.gold{background:#e9bd3c;color:#13213a}.whatsapp{background:#168c4a;color:#fff}.call{background:#e8eef7;color:#0b2a5b}
+.head{display:flex;align-items:center;justify-content:space-between;margin:6px 0 18px}.head h2{font-size:30px;margin:3px 0}
+.back{border:0;background:transparent;color:#0b2a5b;font-weight:900}.filters{display:grid;grid-template-columns:1fr 170px;gap:9px;margin-bottom:15px}
+input,select,textarea{width:100%;padding:13px;border:1px solid #d4dce8;border-radius:11px;background:#fff;font:inherit}textarea{min-height:105px;resize:vertical}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}.card{background:#fff;border:1px solid #e3e8f0;border-radius:16px;padding:15px;box-shadow:0 5px 18px rgba(16,33,59,.07)}
+.property{padding:0;overflow:hidden}.property img{width:100%;height:175px;object-fit:cover;display:block}.property .body{padding:15px}
+.price{font-size:20px;font-weight:900;color:#0b2a5b}.meta{font-size:14px;color:#66758a;margin:7px 0 13px}
+form{display:grid;gap:11px}.field label{display:block;font-size:13px;font-weight:800;margin-bottom:4px}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.message{font-weight:800;color:#0b2a5b;min-height:20px}.preview{width:100%;max-height:230px;object-fit:cover;border-radius:12px;margin-top:7px;display:none}
+.detail-img{width:100%;max-height:360px;object-fit:cover;border-radius:16px}.ownerbox{background:#f5f8fc;border:1px solid #dce5f0;border-radius:12px;padding:13px;margin:14px 0}
+.ownerbox strong{display:block;font-size:16px;margin-bottom:5px}.ownerbox div{margin:3px 0}.contact-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+.empty{padding:25px;text-align:center}.bottom{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #dce3ec;display:flex;justify-content:center;gap:4px;padding:8px 6px;z-index:20}
+.bottom button{border:0;background:transparent;color:#0b2a5b;font-weight:900;padding:9px 10px}.authbox{max-width:520px;margin:20px auto}
+.auth-subtitle{color:#66758a;font-size:14px;margin:-5px 0 15px}.auth-input-wrap{position:relative}.auth-input-wrap input{padding-right:78px}
 .showpass{position:absolute;right:8px;top:7px;border:0;background:#eef3f9;color:#0b2a5b;border-radius:8px;padding:7px 9px;font-weight:800;cursor:pointer}
-.forgot{border:0;background:transparent;color:#0b2a5b;font-weight:800;text-align:right;cursor:pointer;padding:0}
-.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
-.auth-tabs button{border:1px solid #d4dce8;background:#fff;border-radius:10px;padding:12px;font-weight:900}
-.auth-tabs button.active{background:#0b2a5b;color:#fff}
-.owner-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-.stat{background:#f5f8fc;border:1px solid #dce5f0;border-radius:12px;padding:14px}
-.stat strong{display:block;font-size:22px;color:#0b2a5b}
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}.auth-tabs button{border:1px solid #d4dce8;background:#fff;border-radius:10px;padding:12px;font-weight:900}
+.auth-tabs button.active{background:#0b2a5b;color:#fff}.owner-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.stat{background:#f5f8fc;border:1px solid #dce5f0;border-radius:12px;padding:14px}.stat strong{display:block;font-size:22px;color:#0b2a5b}
 .notice{background:#fff7dd;border:1px solid #ecd27b;border-radius:11px;padding:11px;font-size:13px;color:#665016}
 @media(max-width:600px){.filters{grid-template-columns:1fr}.two{grid-template-columns:1fr 1fr}.bottom button{font-size:12px}}
 </style>
@@ -67,8 +44,7 @@ form{display:grid;gap:11px}.field label{display:block;font-size:13px;font-weight
 <main>
 <section id="welcome" class="screen active">
   <div class="hero">
-    <div class="eyebrow">RENTALS</div>
-    <h1>Find Your Next Home</h1>
+    <div class="eyebrow">RENTALS</div><h1>Find Your Next Home</h1>
     <p>One simple platform connecting house owners with tenants.</p>
     <div class="actions">
       <button class="btn primary" onclick="show('tenant')">I'm a Tenant</button>
@@ -78,403 +54,168 @@ form{display:grid;gap:11px}.field label{display:block;font-size:13px;font-weight
 </section>
 
 <section id="tenant" class="screen">
-  <div class="head">
-    <div><div class="eyebrow">TENANT</div><h2>Find a home</h2></div>
-    <button class="back" onclick="show('welcome')">Back</button>
-  </div>
-  <div class="filters">
-    <input id="q" placeholder="Search location or property..." oninput="render()">
-    <select id="max" onchange="render()">
-      <option value="">Any rent</option>
-      <option value="1000000">Up to UGX 1M</option>
-      <option value="1500000">Up to UGX 1.5M</option>
-      <option value="2000000">Up to UGX 2M</option>
-    </select>
-  </div>
+  <div class="head"><div><div class="eyebrow">TENANT</div><h2>Find a home</h2></div><button class="back" onclick="show('welcome')">Back</button></div>
+  <div class="filters"><input id="q" placeholder="Search location or property..." oninput="renderHomes()">
+    <select id="max" onchange="renderHomes()"><option value="">Any rent</option><option value="1000000">Up to UGX 1M</option><option value="1500000">Up to UGX 1.5M</option><option value="2000000">Up to UGX 2M</option></select></div>
   <div id="list" class="grid"></div>
 </section>
 
-<section id="details" class="screen">
-  <button class="back" onclick="show('tenant')">Back to homes</button>
-  <div id="detail" style="margin-top:12px"></div>
-</section>
+<section id="details" class="screen"><button class="back" onclick="show('tenant')">Back to homes</button><div id="detail" style="margin-top:12px"></div></section>
 
 <section id="interest" class="screen">
-  <div class="head">
-    <div><div class="eyebrow">INQUIRY</div><h2>I'm Interested</h2></div>
-    <button class="back" onclick="show('tenant')">Back</button>
-  </div>
+  <div class="head"><div><div class="eyebrow">INQUIRY</div><h2>I'm Interested</h2></div><button class="back" onclick="show('tenant')">Back</button></div>
   <div id="interestProperty" class="card" style="margin-bottom:12px"></div>
-  <div class="card">
-    <form id="interestForm">
-      <div class="field"><label>Your full name</label><input id="tenantName" required placeholder="e.g. John Doe"></div>
-      <div class="field"><label>Your contact number</label><input id="tenantPhone" type="tel" required placeholder="+256 700 000 000"></div>
-      <div class="field"><label>Message</label><textarea id="tenantMessage" placeholder="I would like to view this property..."></textarea></div>
-      <button class="btn primary" type="submit">Send Inquiry</button>
-      <div id="interestMsg" class="message"></div>
-    </form>
-  </div>
+  <div class="card"><form id="interestForm">
+    <div class="field"><label>Your full name</label><input id="tenantName" required></div>
+    <div class="field"><label>Your contact number</label><input id="tenantPhone" type="tel" required placeholder="+256 700 000 000"></div>
+    <div class="field"><label>Message</label><textarea id="tenantMessage" placeholder="I would like to view this property..."></textarea></div>
+    <button class="btn primary" type="submit">Send Inquiry</button><div id="interestMsg" class="message"></div>
+  </form></div>
 </section>
 
 <section id="auth" class="screen">
-  <div class="head">
-    <div><div class="eyebrow">ACCOUNT</div><h2 id="authTitle">Login</h2></div>
-    <button class="back" onclick="show('welcome')">Back</button>
-  </div>
+  <div class="head"><div><div class="eyebrow">ACCOUNT</div><h2 id="authTitle">Login</h2></div><button class="back" onclick="show('welcome')">Back</button></div>
   <div class="card authbox">
-    <div class="auth-tabs">
-      <button id="loginTab" class="active" type="button" onclick="setAuthMode('login')">Login</button>
-      <button id="signupTab" type="button" onclick="setAuthMode('signup')">Create Account</button>
-    </div>
-    <p class="auth-subtitle">Use the same box with either your email address or phone number.</p>
-
+    <div class="auth-tabs"><button id="loginTab" class="active" type="button" onclick="setAuthMode('login')">Login</button><button id="signupTab" type="button" onclick="setAuthMode('signup')">Create Account</button></div>
+    <p class="auth-subtitle">Owner accounts use email and password. Phone SMS verification is not used.</p>
     <form id="authForm">
-      <div class="field">
-        <label>Email or phone number</label>
-        <input id="authIdentifier" required autocomplete="username" placeholder="you@example.com or +256 700 000 000">
-      </div>
-
-      <div id="authNameField" class="field" style="display:none">
-        <label>Full name</label>
-        <input id="authName" autocomplete="name" placeholder="Your full name">
-      </div>
-
-      <div class="field">
-        <label>Password</label>
-        <div class="auth-input-wrap">
-          <input id="authPassword" type="password" required minlength="6" autocomplete="current-password" placeholder="At least 6 characters">
-          <button class="showpass" type="button" onclick="togglePassword()">Show</button>
-        </div>
-      </div>
-
-      <button id="forgotBtn" class="forgot" type="button" onclick="forgotPassword()">Forgot password?</button>
-      <button id="authSubmit" class="btn primary" type="submit">Login</button>
-      <div id="authMsg" class="message"></div>
-
-      <div class="notice">
-        Phone SMS verification is not used. Email confirmation is handled by Supabase if it is enabled in your project.
-      </div>
+      <div class="field"><label>Email address</label><input id="authIdentifier" type="email" required autocomplete="username" placeholder="you@example.com"></div>
+      <div id="authNameField" class="field" style="display:none"><label>Full name</label><input id="authName" autocomplete="name"></div>
+      <div class="field"><label>Password</label><div class="auth-input-wrap"><input id="authPassword" type="password" required minlength="6" autocomplete="current-password"><button class="showpass" type="button" onclick="togglePassword()">Show</button></div></div>
+      <button id="forgotBtn" class="back" type="button" onclick="forgotPassword()">Forgot password?</button>
+      <button id="authSubmit" class="btn primary" type="submit">Login</button><div id="authMsg" class="message"></div>
+      <div class="notice">Email confirmation is controlled by Supabase. Phone SMS verification is disabled for this app.</div>
     </form>
   </div>
 </section>
 
 <section id="dashboard" class="screen">
-  <div class="head">
-    <div><div class="eyebrow">MY ACCOUNT</div><h2 id="dashTitle">My Page</h2></div>
-    <button class="back" onclick="logoutOwner()">Logout</button>
-  </div>
-  <div class="owner-summary">
-    <div class="stat"><span>Properties</span><strong id="propertyCount">0</strong></div>
-    <div class="stat"><span>Enquiries</span><strong id="inquiryCount">0</strong></div>
-  </div>
-  <div class="card" style="margin-bottom:14px">
-    <button class="btn gold" style="width:100%" onclick="openOwnerArea()">+ List a Property</button>
-  </div>
+  <div class="head"><div><div class="eyebrow">MY ACCOUNT</div><h2 id="dashTitle">My Page</h2></div><button class="back" onclick="logoutOwner()">Logout</button></div>
+  <div class="owner-summary"><div class="stat"><span>Properties</span><strong id="propertyCount">0</strong></div><div class="stat"><span>Enquiries</span><strong id="inquiryCount">0</strong></div></div>
+  <div class="card" style="margin-bottom:14px"><button class="btn gold" style="width:100%" onclick="show('owner')">+ List a Property</button></div>
   <div id="ownerProperties" class="grid"></div>
-  <div class="card" style="margin-top:14px">
-    <div class="eyebrow">TENANT ENQUIRIES</div>
-    <h3>My enquiries</h3>
-    <div id="ownerInquiries"></div>
-  </div>
+  <div class="card" style="margin-top:14px"><div class="eyebrow">TENANT ENQUIRIES</div><h3>My enquiries</h3><div id="ownerInquiries"></div></div>
 </section>
 
 <section id="owner" class="screen">
-  <div class="head">
-    <div><div class="eyebrow">HOUSE OWNER</div><h2>List your property</h2></div>
-    <button class="back" onclick="show('dashboard')">Back</button>
-  </div>
-  <div class="card">
-    <form id="form">
-      <div class="field"><label>Owner full name</label><input id="ownerName" name="ownerName" required placeholder="e.g. John Doe"></div>
-      <div class="two">
-        <div class="field"><label>Phone number</label><input id="ownerPhone" name="phone" type="tel" required placeholder="+256 700 000 000"></div>
-        <div class="field"><label>WhatsApp number</label><input id="ownerWhatsapp" name="whatsapp" type="tel" placeholder="+256 700 000 000"></div>
-      </div>
-      <div class="field"><label>Property title</label><input name="title" required placeholder="e.g. 2 Bedroom House"></div>
-      <div class="field"><label>Location</label><input name="location" required placeholder="e.g. Ntinda, Kampala"></div>
-      <div class="field"><label>Monthly rent (UGX)</label><input name="rent" type="number" required placeholder="1200000"></div>
-      <div class="two">
-        <div class="field"><label>Bedrooms</label><input name="beds" type="number" min="1" required value="2"></div>
-        <div class="field"><label>Bathrooms</label><input name="baths" type="number" min="1" required value="1"></div>
-      </div>
-      <div class="field">
-        <label>Property photo</label>
-        <input id="photo" name="photo" type="file" accept="image/*">
-        <img id="preview" class="preview" alt="Photo preview">
-      </div>
-      <div class="field"><label>Description</label><textarea name="description" required placeholder="Tell tenants about the property..."></textarea></div>
-      <button class="btn primary" type="submit">Publish Property</button>
-      <div id="msg" class="message"></div>
-    </form>
-  </div>
+  <div class="head"><div><div class="eyebrow">HOUSE OWNER</div><h2>List your property</h2></div><button class="back" onclick="show('dashboard')">Back</button></div>
+  <div class="card"><form id="propertyForm">
+    <div class="field"><label>Owner full name</label><input id="ownerName" required></div>
+    <div class="two"><div class="field"><label>Phone number</label><input id="ownerPhone" type="tel" required placeholder="+256 700 000 000"></div><div class="field"><label>WhatsApp number</label><input id="ownerWhatsapp" type="tel" placeholder="+256 700 000 000"></div></div>
+    <div class="field"><label>Property title</label><input id="title" required placeholder="e.g. 2 Bedroom House"></div>
+    <div class="field"><label>Property type</label><select id="propertyType"><option>House</option><option>Apartment</option><option>Room</option><option>Shop</option></select></div>
+    <div class="field"><label>Location</label><input id="location" required placeholder="e.g. Ntinda, Kampala"></div>
+    <div class="two"><div class="field"><label>City</label><input id="city" value="Kampala"></div><div class="field"><label>District</label><input id="district"></div></div>
+    <div class="field"><label>Monthly rent (UGX)</label><input id="price" type="number" required placeholder="1200000"></div>
+    <div class="two"><div class="field"><label>Bedrooms</label><input id="bedrooms" type="number" min="0" value="2"></div><div class="field"><label>Bathrooms</label><input id="bathrooms" type="number" min="0" value="1"></div></div>
+    <div class="field"><label>Property photo</label><input id="photo" type="file" accept="image/*"><img id="preview" class="preview" alt=""></div>
+    <div class="field"><label>Description</label><textarea id="description" required></textarea></div>
+    <button class="btn primary" type="submit">Publish Property</button><div id="msg" class="message"></div>
+  </form></div>
 </section>
 </main>
 
-<nav class="bottom">
-  <button onclick="show('welcome')">Home</button>
-  <button onclick="show('tenant')">Find Homes</button>
-  <button onclick="openOwnerArea()">My Account</button>
-</nav>
+<nav class="bottom"><button onclick="show('welcome')">Home</button><button onclick="show('tenant')">Find Homes</button><button onclick="openOwnerArea()">My Account</button></nav>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const SUPABASE_URL="https://ubcgltbyqohhgotwjhoy.supabase.co";
-const SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ1YmNnbHRieXFvaGd0d2pob3kiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTc4NjQ5NTcxNywiZXhwIjoyMTAyMDcxNzE3fQ.MDtiNU5eSjbal31fdZwIqTPlwZlZEJzxFMDuArEuN_c";
-const {createClient}=supabase;
-const db=createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
-const STORAGE_BUCKET="property-images";
+const SUPABASE_ANON_KEY="sb_publishable_ZqNijNG9un-1zCquD7Ju7w_JZ4VGxV5";
+const db=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+const BUCKET="property-images";
 const fallback="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=900&q=80";
+let currentUser=null,authMode="login",selectedProperty=null,homes=[];
 
-const seed=[
- {id:1,ownerName:"A Styles One",title:"Modern 2 Bedroom House",location:"Ntinda, Kampala",rent:1200000,beds:2,baths:2,photo:fallback,description:"Comfortable modern home in a convenient location.",phone:"+256 700 000 000",whatsapp:"+256 700 000 000"},
- {id:2,ownerName:"A Styles One",title:"Family Home",location:"Kira, Wakiso",rent:1500000,beds:3,baths:2,photo:fallback,description:"Spacious family home in a quiet area.",phone:"+256 700 000 001",whatsapp:"+256 700 000 001"}
-];
-
-let homes=JSON.parse(localStorage.getItem("astylesRentals003")||"null")||seed;
-let authMode="login";
-let currentUser=null;
-let selectedProperty=null;
-
-const money=n=>"UGX "+Number(n||0).toLocaleString("en-UG");
 const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+const money=n=>"UGX "+Number(n||0).toLocaleString("en-UG");
+function normalizePhone(v){v=String(v||"").trim().replace(/[()\s-]/g,"");if(/^07\d{8}$/.test(v))return "+256"+v.slice(1);return v}
+function show(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));document.getElementById(id)?.classList.add("active");window.scrollTo(0,0);if(id==="tenant")loadHomes();if(id==="dashboard")loadDashboard()}
+function setAuthMode(mode){authMode=mode;loginTab.classList.toggle("active",mode==="login");signupTab.classList.toggle("active",mode==="signup");authTitle.textContent=mode==="login"?"Login":"Create Account";authSubmit.textContent=mode==="login"?"Login":"Create Account";authNameField.style.display=mode==="signup"?"block":"none";forgotBtn.style.display=mode==="login"?"block":"none";authMsg.textContent=""}
+function togglePassword(){authPassword.type=authPassword.type==="password"?"text":"password";document.querySelector(".showpass").textContent=authPassword.type==="password"?"Show":"Hide"}
+function openOwnerArea(){if(currentUser){prefillOwner();show("dashboard")}else{setAuthMode("login");show("auth")}}
+function prefillOwner(){ownerName.value=currentUser.user_metadata?.full_name||"";ownerPhone.value=currentUser.user_metadata?.phone||"";ownerWhatsapp.value=currentUser.user_metadata?.phone||""}
 
-function saveHomes(){localStorage.setItem("astylesRentals003",JSON.stringify(homes));}
-function show(id){
- document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
- const el=document.getElementById(id); if(el)el.classList.add("active");
- window.scrollTo(0,0);
- if(id==="tenant")render();
- if(id==="dashboard")renderDashboard();
-}
-function normalizePhone(v){
- v=String(v||"").trim().replace(/[()\s-]/g,"");
- if(/^07\d{8}$/.test(v))return "+256"+v.slice(1);
- return v;
-}
-function isEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);}
-function setAuthMode(mode){
- authMode=mode;
- document.getElementById("loginTab").classList.toggle("active",mode==="login");
- document.getElementById("signupTab").classList.toggle("active",mode==="signup");
- document.getElementById("authTitle").textContent=mode==="login"?"Login":"Create Account";
- document.getElementById("authSubmit").textContent=mode==="login"?"Login":"Create Account";
- document.getElementById("authNameField").style.display=mode==="signup"?"block":"none";
- document.getElementById("forgotBtn").style.display=mode==="login"?"block":"none";
- document.getElementById("authPassword").autocomplete=mode==="login"?"current-password":"new-password";
- document.getElementById("authMsg").textContent="";
-}
-function togglePassword(){
- const p=document.getElementById("authPassword"),b=document.querySelector(".showpass");
- p.type=p.type==="password"?"text":"password";
- b.textContent=p.type==="password"?"Show":"Hide";
-}
-function openOwnerArea(){
- if(currentUser){prefillOwner();show("dashboard");}
- else {setAuthMode("login");show("auth");}
-}
-function prefillOwner(){
- const meta=currentUser?.user_metadata||{};
- const name=meta.full_name||"";
- const phone=currentUser?.phone||"";
- document.getElementById("ownerName").value=name;
- document.getElementById("ownerPhone").value=phone;
- document.getElementById("ownerWhatsapp").value=phone;
-}
 async function handleAuth(e){
- e.preventDefault();
- const msg=document.getElementById("authMsg"); msg.textContent="Working...";
- let identifier=document.getElementById("authIdentifier").value.trim();
- const password=document.getElementById("authPassword").value;
- const name=document.getElementById("authName").value.trim();
- if(identifier && !isEmail(identifier))identifier=normalizePhone(identifier);
+ e.preventDefault();authMsg.textContent="Working...";
+ const email=authIdentifier.value.trim().toLowerCase(),password=authPassword.value,name=authName.value.trim();
  try{
-   if(authMode==="signup"){
-     if(isEmail(identifier)){
-       const {data,error}=await db.auth.signUp({email:identifier,password,options:{data:{full_name:name}}});
-       if(error)throw error;
-       if(data.session){
-         currentUser=data.user; msg.textContent="Account created successfully."; show("dashboard");
-       }else{
-         msg.textContent="Account created. Check your email to confirm your account, then log in.";
-       }
-     }else{
-       const {data,error}=await db.auth.signUp({phone:identifier,password,options:{data:{full_name:name}}});
-       if(error)throw error;
-       if(data.session){
-         currentUser=data.user; msg.textContent="Account created successfully."; show("dashboard");
-       }else{
-         msg.textContent="Account created, but your Supabase Phone confirmation setting must be OFF for phone login without SMS.";
-       }
-     }
-   }else{
-     const credentials=isEmail(identifier)?{email:identifier,password}:{phone:identifier,password};
-     const {data,error}=await db.auth.signInWithPassword(credentials);
-     if(error)throw error;
-     currentUser=data.user; msg.textContent="Logged in."; show("dashboard");
-   }
- }catch(err){msg.textContent=err.message||"Authentication failed.";}
-}
-async function forgotPassword(){
- const msg=document.getElementById("authMsg");
- const raw=document.getElementById("authIdentifier").value.trim();
- if(!raw){msg.textContent="Enter your email first.";return;}
- if(!isEmail(raw)){msg.textContent="Password reset is available through email. For a phone-only account, add an email to the account before using reset.";return;}
- msg.textContent="Sending reset email...";
- const {error}=await db.auth.resetPasswordForEmail(raw,{redirectTo:location.origin+location.pathname+"#reset"});
- msg.textContent=error?(error.message||"Could not send reset email."):"Reset email sent. Check your inbox.";
-}
-async function logoutOwner(){await db.auth.signOut();currentUser=null;show("welcome");}
-
-function render(){
- const q=document.getElementById("q").value.toLowerCase().trim();
- const max=Number(document.getElementById("max").value||0);
- const filtered=homes.filter(h=>(!q||`${h.title} ${h.location} ${h.description}`.toLowerCase().includes(q))&&(!max||Number(h.rent)<=max));
- const list=document.getElementById("list");
- list.innerHTML=filtered.length?filtered.map(h=>`
- <article class="card property">
-   <img src="${esc(h.photo||fallback)}" alt="">
-   <div class="body">
-    <div class="price">${money(h.rent)}</div>
-    <h3>${esc(h.title)}</h3>
-    <div class="meta">${esc(h.location)} · ${h.beds} beds · ${h.baths} baths</div>
-    <button class="btn primary" style="width:100%" onclick="openDetails(${h.id})">View Property</button>
-   </div>
- </article>`).join(""):`<div class="card empty">No properties match your search.</div>`;
-}
-function openDetails(id){
- selectedProperty=homes.find(h=>String(h.id)===String(id)); if(!selectedProperty)return;
- const h=selectedProperty;
- document.getElementById("detail").innerHTML=`
- <div class="card">
-  <img class="detail-img" src="${esc(h.photo||fallback)}" alt="">
-  <div class="price" style="margin-top:14px">${money(h.rent)}</div>
-  <h2>${esc(h.title)}</h2>
-  <div class="meta">${esc(h.location)} · ${h.beds} bedrooms · ${h.baths} bathrooms</div>
-  <p>${esc(h.description)}</p>
-  <div class="ownerbox">
-   <strong>Contact owner</strong>
-   <div>Phone/WhatsApp: ${esc(h.phone||h.whatsapp||"Not provided")}</div>
-   <div class="contact-actions">
-    <a class="btn call" href="tel:${encodeURIComponent(h.phone||h.whatsapp||"")}">Call</a>
-    <a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/${normalizePhone(h.whatsapp||h.phone||"").replace("+","")}">WhatsApp</a>
-   </div>
-  </div>
-  <button class="btn primary" style="width:100%" onclick="openInterest()">I'm Interested</button>
- </div>`;
- show("details");
-}
-function openInterest(){
- if(!selectedProperty)return;
- document.getElementById("interestProperty").innerHTML=`<strong>${esc(selectedProperty.title)}</strong><div class="meta">${esc(selectedProperty.location)} · ${money(selectedProperty.rent)}</div>`;
- show("interest");
-}
-async function sendInquiry(e){
- e.preventDefault();
- const msg=document.getElementById("interestMsg");msg.textContent="Sending...";
- if(!selectedProperty){msg.textContent="Select a property first.";return;}
- try{
-   const tenantName=document.getElementById("tenantName").value.trim();
-   const tenantPhone=normalizePhone(document.getElementById("tenantPhone").value.trim());
-   const message=document.getElementById("tenantMessage").value.trim();
-   const {error}=await db.from("property_inquiries").insert({
-     property_id:String(selectedProperty.id),
-     owner_id:selectedProperty.owner_id||null,
-     owner_name:selectedProperty.ownerName||"Property Owner",
-     owner_phone:selectedProperty.phone||selectedProperty.whatsapp||"",
-     tenant_name:tenantName,
-     tenant_phone:tenantPhone,
-     tenant_whatsapp:tenantPhone,
-     message
-   });
+  if(authMode==="signup"){
+   const {data,error}=await db.auth.signUp({email,password,options:{data:{full_name:name}}});
    if(error)throw error;
-   msg.textContent="Inquiry successfully sent.";
-   document.getElementById("interestForm").reset();
- }catch(err){msg.textContent="Could not send inquiry: "+(err.message||"permission denied");}
+   if(data.session){currentUser=data.user;await ensureProfile(name);authMsg.textContent="Account created.";show("dashboard")}
+   else authMsg.textContent="Account created. Check your email, then log in.";
+  }else{
+   const {data,error}=await db.auth.signInWithPassword({email,password});if(error)throw error;
+   currentUser=data.user;await ensureProfile(currentUser.user_metadata?.full_name||"");show("dashboard");
+  }
+ }catch(err){authMsg.textContent=err.message||"Authentication failed."}
 }
-function renderDashboard(){
+async function ensureProfile(name){
  if(!currentUser)return;
- const name=currentUser.user_metadata?.full_name||currentUser.email||currentUser.phone||"My Account";
- document.getElementById("dashTitle").textContent=name;
- const mine=homes.filter(x=>x.owner_id===currentUser.id);
- document.getElementById("propertyCount").textContent=mine.length;
- document.getElementById("ownerProperties").innerHTML=mine.length?mine.map(h=>`
- <article class="card property">
-  <img src="${esc(h.photo||fallback)}" alt="">
-  <div class="body"><div class="price">${money(h.rent)}</div><h3>${esc(h.title)}</h3><div class="meta">${esc(h.location)}</div></div>
- </article>`).join(""):`<div class="card empty">You have not listed a property yet.</div>`;
- loadInquiries();
+ const {data:p}=await db.from("profiles").select("role,full_name,phone").eq("id",currentUser.id).maybeSingle();
+ if(p){if(p.role!=="owner"&&p.role!=="admin")authMsg.textContent="Your account is not marked as an owner. Ask the app administrator to set your profile role to owner.";return p}
+ return null;
 }
-async function loadInquiries(){
- if(!currentUser)return;
- const {data,error}=await db.from("property_inquiries").select("*").eq("owner_id",currentUser.id).order("created_at",{ascending:false});
- const items=error?[]:(data||[]);
- document.getElementById("inquiryCount").textContent=items.length;
- document.getElementById("ownerInquiries").innerHTML=items.length?items.map(i=>`
- <div class="card" style="margin-top:10px">
-  <strong>${esc(i.tenant_name)}</strong>
-  <div class="meta">${esc(i.tenant_phone)} · ${esc(i.created_at?new Date(i.created_at).toLocaleString():"")}</div>
-  <p>${esc(i.message||"No message provided.")}</p>
- </div>`).join(""):"<p>No enquiries yet.</p>";
+async function forgotPassword(){const email=authIdentifier.value.trim();if(!email){authMsg.textContent="Enter your email first.";return}authMsg.textContent="Sending reset email...";const {error}=await db.auth.resetPasswordForEmail(email,{redirectTo:location.origin});authMsg.textContent=error?(error.message||"Could not send reset email."):"Reset email sent. Check your inbox."}
+async function logoutOwner(){await db.auth.signOut();currentUser=null;show("welcome")}
+
+async function loadHomes(){
+ const {data,error}=await db.from("properties").select("*,property_images(image_url,is_primary,sort_order)").eq("status","available").order("created_at",{ascending:false});
+ homes=error?[]:(data||[]).map(p=>({...p,photo:(p.property_images||[]).sort((a,b)=>(b.is_primary?1:0)-(a.is_primary?1:0)||a.sort_order-b.sort_order)[0]?.image_url||fallback}));
+ renderHomes();
 }
-async function uploadPropertyPhoto(file){
- if(!file)return fallback;
- if(!file.type.startsWith("image/"))throw new Error("Please select an image file.");
- if(file.size>10*1024*1024)throw new Error("Photo is too large. Please use an image under 10 MB.");
- const ext=(file.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"");
- const path=`properties/${Date.now()}-${crypto.randomUUID()}.${ext||"jpg"}`;
- const {error}=await db.storage.from(STORAGE_BUCKET).upload(path,file,{cacheControl:"3600",upsert:false,contentType:file.type});
- if(error)throw error;
- return db.storage.from(STORAGE_BUCKET).getPublicUrl(path).data.publicUrl;
+function renderHomes(){
+ const q=(document.getElementById("q").value||"").toLowerCase().trim(),max=Number(document.getElementById("max").value||0);
+ const filtered=homes.filter(h=>(!q||`${h.title} ${h.location} ${h.description} ${h.city} ${h.district}`.toLowerCase().includes(q))&&(!max||Number(h.price)<=max));
+ list.innerHTML=filtered.length?filtered.map(h=>`<article class="card property"><img src="${esc(h.photo)}" alt=""><div class="body"><div class="price">${money(h.price)}</div><h3>${esc(h.title)}</h3><div class="meta">${esc(h.location)} · ${h.bedrooms||0} beds · ${h.bathrooms||0} baths</div><button class="btn primary" style="width:100%" onclick="openDetails('${h.id}')">View Property</button></div></article>`).join(""):`<div class="card empty">No properties available yet.</div>`
 }
-async function publishProperty(e){
- e.preventDefault();
- const msg=document.getElementById("msg");msg.textContent="Publishing...";
- if(!currentUser){msg.textContent="Please log in first.";return;}
+function openDetails(id){selectedProperty=homes.find(h=>String(h.id)===String(id));if(!selectedProperty)return;const h=selectedProperty;detail.innerHTML=`<div class="card"><img class="detail-img" src="${esc(h.photo)}" alt=""><div class="price" style="margin-top:14px">${money(h.price)}</div><h2>${esc(h.title)}</h2><div class="meta">${esc(h.location)} · ${h.bedrooms||0} bedrooms · ${h.bathrooms||0} bathrooms</div><p>${esc(h.description)}</p><div class="ownerbox"><strong>Contact owner</strong><div>${esc(h.owner_name||"Property Owner")}</div><div>${esc(h.owner_phone||h.owner_whatsapp||"Not provided")}</div><div class="contact-actions"><a class="btn call" href="tel:${encodeURIComponent(h.owner_phone||h.owner_whatsapp||"")}">Call</a><a class="btn whatsapp" target="_blank" href="https://wa.me/${normalizePhone(h.owner_whatsapp||h.owner_phone||"").replace("+","")}">WhatsApp</a></div></div><button class="btn primary" style="width:100%" onclick="openInterest()">I'm Interested</button></div>`;show("details")}
+function openInterest(){if(!selectedProperty)return;interestProperty.innerHTML=`<strong>${esc(selectedProperty.title)}</strong><div class="meta">${esc(selectedProperty.location)} · ${money(selectedProperty.price)}</div>`;show("interest")}
+
+async function sendInquiry(e){
+ e.preventDefault();interestMsg.textContent="Sending...";if(!selectedProperty)return;
  try{
-   const fd=new FormData(e.target);
-   const phone=normalizePhone(fd.get("phone"));
-   const whatsapp=normalizePhone(fd.get("whatsapp")||phone);
-   const photo=await uploadPropertyPhoto(document.getElementById("photo").files[0]);
-   const property={
-     id:Date.now(),
-     owner_id:currentUser.id,
-     ownerName:String(fd.get("ownerName")||"").trim(),
-     phone,whatsapp,
-     title:String(fd.get("title")||"").trim(),
-     location:String(fd.get("location")||"").trim(),
-     rent:Number(fd.get("rent")||0),
-     beds:Number(fd.get("beds")||0),
-     baths:Number(fd.get("baths")||0),
-     photo,
-     description:String(fd.get("description")||"").trim(),
-     created_at:new Date().toISOString()
-   };
-   homes.unshift(property);saveHomes();
-   msg.textContent="Property published successfully.";
-   e.target.reset();document.getElementById("preview").style.display="none";
-   setTimeout(()=>show("dashboard"),600);
- }catch(err){msg.textContent=err.message||"Could not publish property.";}
-}
-function preAuth(){
- db.auth.getSession().then(({data})=>{
-   currentUser=data.session?.user||null;
-   if(currentUser)renderDashboard();
- });
- db.auth.onAuthStateChange((_event,session)=>{
-   currentUser=session?.user||null;
- });
+  const {error}=await db.from("property_inquiries").insert({property_id:String(selectedProperty.id),owner_id:selectedProperty.owner_id,owner_name:selectedProperty.owner_name||"Property Owner",owner_phone:selectedProperty.owner_phone||selectedProperty.owner_whatsapp||"",tenant_name:tenantName.value.trim(),tenant_phone:normalizePhone(tenantPhone.value),tenant_whatsapp:normalizePhone(tenantPhone.value),message:tenantMessage.value.trim()});
+  if(error)throw error;interestMsg.textContent="Inquiry successfully sent.";interestForm.reset();
+ }catch(err){interestMsg.textContent="Could not send inquiry: "+(err.message||"permission denied")}
 }
 
-document.getElementById("authForm").addEventListener("submit",handleAuth);
-document.getElementById("interestForm").addEventListener("submit",sendInquiry);
-document.getElementById("form").addEventListener("submit",publishProperty);
-document.getElementById("photo").addEventListener("change",e=>{
- const f=e.target.files[0],img=document.getElementById("preview");
- if(!f){img.style.display="none";return;}
- img.src=URL.createObjectURL(f);img.style.display="block";
-});
-preAuth();
-render();
+async function loadDashboard(){
+ if(!currentUser)return;
+ const {data:profile}=await db.from("profiles").select("full_name,role,phone").eq("id",currentUser.id).maybeSingle();
+ dashTitle.textContent=profile?.full_name||currentUser.email||"My Account";
+ const {data:mine,error}=await db.from("properties").select("*,property_images(image_url,is_primary,sort_order)").eq("owner_id",currentUser.id).order("created_at",{ascending:false});
+ if(error){ownerProperties.innerHTML=`<div class="card empty">Could not load your properties: ${esc(error.message)}</div>`;return}
+ const rows=mine||[];propertyCount.textContent=rows.length;
+ ownerProperties.innerHTML=rows.length?rows.map(h=>{const img=(h.property_images||[]).sort((a,b)=>(b.is_primary?1:0)-(a.is_primary?1:0)||a.sort_order-b.sort_order)[0]?.image_url||fallback;return `<article class="card property"><img src="${esc(img)}"><div class="body"><div class="price">${money(h.price)}</div><h3>${esc(h.title)}</h3><div class="meta">${esc(h.location)} · ${h.status||"available"}</div></div></article>`}).join(""):`<div class="card empty">You have not listed a property yet.</div>`;
+ const {data:inq}=await db.from("property_inquiries").select("*").eq("owner_id",currentUser.id).order("created_at",{ascending:false});const items=inq||[];inquiryCount.textContent=items.length;
+ ownerInquiries.innerHTML=items.length?items.map(i=>`<div class="card" style="margin-top:10px"><strong>${esc(i.tenant_name)}</strong><div class="meta">${esc(i.tenant_phone)} · ${i.created_at?new Date(i.created_at).toLocaleString():""}</div><p>${esc(i.message||"No message provided.")}</p></div>`).join(""):"<p>No enquiries yet.</p>";
+}
+
+async function publishProperty(e){
+ e.preventDefault();msg.textContent="Publishing...";if(!currentUser){msg.textContent="Please log in first.";return}
+ try{
+  const {data:profile}=await db.from("profiles").select("role,full_name,phone").eq("id",currentUser.id).maybeSingle();
+  if(!profile||!["owner","admin"].includes(profile.role)){throw new Error("Your account is not an owner account. Set the profile role to owner first.")}
+  const {data:p,error}=await db.from("properties").insert({owner_id:currentUser.id,title:title.value.trim(),description:description.value.trim(),property_type:propertyType.value,price:Number(price.value),bedrooms:Number(bedrooms.value||0),bathrooms:Number(bathrooms.value||0),location:location.value.trim(),city:city.value.trim(),district:district.value.trim(),status:"available",owner_name:ownerName.value.trim(),owner_phone:normalizePhone(ownerPhone.value),owner_whatsapp:normalizePhone(ownerWhatsapp.value||ownerPhone.value)}).select().single();
+  if(error)throw error;
+  const file=photo.files[0];
+  if(file){
+   const ext=(file.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"")||"jpg",path=`properties/${p.id}/${crypto.randomUUID()}.${ext}`;
+   const up=await db.storage.from(BUCKET).upload(path,file,{upsert:false,contentType:file.type});
+   if(!up.error){
+    const publicUrl=db.storage.from(BUCKET).getPublicUrl(path).data.publicUrl;
+    await db.from("property_images").insert({property_id:p.id,image_url:publicUrl,is_primary:true,sort_order:0});
+   }
+  }
+  msg.textContent="Property published successfully.";e.target.reset();preview.style.display="none";await loadDashboard();setTimeout(()=>show("dashboard"),500);
+ }catch(err){msg.textContent=err.message||"Could not publish property."}
+}
+
+photo.addEventListener("change",e=>{const f=e.target.files[0];if(!f){preview.style.display="none";return}preview.src=URL.createObjectURL(f);preview.style.display="block"});
+authForm.addEventListener("submit",handleAuth);interestForm.addEventListener("submit",sendInquiry);propertyForm.addEventListener("submit",publishProperty);
+db.auth.getSession().then(({data})=>{currentUser=data.session?.user||null;if(currentUser)loadDashboard()});
+db.auth.onAuthStateChange((_event,session)=>{currentUser=session?.user||null});
 </script>
 </body>
 </html>
