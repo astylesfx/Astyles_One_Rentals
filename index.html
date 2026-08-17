@@ -215,8 +215,10 @@ async function logoutOwner(){await db.auth.signOut();currentUser=null;show("welc
 async function loadHomes(){
  list.innerHTML='<div class="card empty">Loading homes...</div>';
  try{
-  const {data,error}=await db.from("properties").select("*").order("created_at",{ascending:false});
-  if(error)throw error;homes=data||[];renderHomes();
+  const {data,error}=await db.from("properties").select("*,property_images(image_url,is_primary,sort_order)").order("created_at",{ascending:false});
+  if(error)throw error;
+  homes=(data||[]).map(p=>({...p,photo:(p.property_images||[]).sort((a,b)=>(b.is_primary?1:0)-(a.is_primary?1:0)||(a.sort_order||0)-(b.sort_order||0))[0]?.image_url||fallback}));
+  renderHomes();
  }catch(error){list.innerHTML=`<div class="card empty">Could not load properties.<br><br>${esc(error.message)}</div>`}
 }
 
@@ -231,13 +233,13 @@ function renderHomes(){
 }
 
 function propertyCard(p){
- const image=p.image_url||fallback;
+ const image=p.photo||fallback;
  return `<article class="card property"><img src="${esc(image)}" alt="${esc(p.title)}" onerror="this.src='${fallback}'"><div class="body"><div class="price">${money(p.price)}</div><h3>${esc(p.title)}</h3><div class="meta">${esc(p.location||"")}${p.city?", "+esc(p.city):""}</div><div class="meta">${esc(p.bedrooms??0)} bedrooms • ${esc(p.bathrooms??0)} bathrooms</div><button class="btn primary" style="width:100%" onclick="openDetails('${esc(p.id)}')">View Property</button></div></article>`;
 }
 
 function openDetails(id){
  const property=homes.find(p=>String(p.id)===String(id));if(!property)return;
- selectedProperty=property;const image=property.image_url||fallback;
+ selectedProperty=property;const image=property.photo||fallback;
  detail.innerHTML=`<div class="card"><img class="detail-img" src="${esc(image)}" alt="${esc(property.title)}" onerror="this.src='${fallback}'"><h2>${esc(property.title)}</h2><div class="price">${money(property.price)}</div><div class="meta">${esc(property.location||"")}${property.city?", "+esc(property.city):""}</div><div class="meta">${esc(property.bedrooms||0)} bedrooms • ${esc(property.bathrooms||0)} bathrooms</div><p>${esc(property.description||"")}</p><div class="ownerbox"><strong>Contact Owner</strong><div>${esc(property.owner_name||"Property Owner")}</div><div>${esc(property.owner_phone||"")}</div></div><div class="contact-actions"><a class="btn whatsapp" target="_blank" href="${whatsappLink(property.owner_whatsapp||property.owner_phone)}">WhatsApp</a><a class="btn call" href="tel:${esc(normalizePhone(property.owner_phone))}">Call Owner</a></div><button class="btn gold" style="width:100%;margin-top:10px" onclick="openInterest()">I'm Interested</button></div>`;
  show("details");
 }
@@ -257,7 +259,7 @@ document.getElementById("interestForm").addEventListener("submit",async e=>{
  e.preventDefault();if(!selectedProperty)return;
  interestMsg.textContent="Sending inquiry...";
  try{
-  const {error}=await db.from("inquiries").insert({property_id:selectedProperty.id,owner_id:selectedProperty.owner_id,tenant_name:clean("tenantName"),tenant_phone:normalizePhone(valueOf("tenantPhone")),message:clean("tenantMessage"),status:"new"});
+  const {error}=await db.from("property_inquiries").insert({property_id:selectedProperty.id,owner_id:selectedProperty.owner_id,tenant_name:clean("tenantName"),tenant_phone:normalizePhone(valueOf("tenantPhone")),message:clean("tenantMessage"),status:"new"});
   if(error)throw error;
   interestMsg.textContent="Inquiry sent successfully.";interestMsg.className="message success";e.target.reset();
  }catch(error){interestMsg.textContent=error.message||"Could not send inquiry.";interestMsg.className="message error"}
@@ -303,14 +305,14 @@ async function loadDashboard(){
   const {data:properties,error}=await db.from("properties").select("*").eq("owner_id",currentUser.id).order("created_at",{ascending:false});
   if(error)throw error;
   const propertyList=properties||[];propertyCount.textContent=propertyList.length;ownerProperties.innerHTML=propertyList.length?propertyList.map(ownerPropertyCard).join(""):'<div class="card empty">You have no properties yet.</div>';
-  const {data:inquiries,error:inquiryError}=await db.from("inquiries").select("*").eq("owner_id",currentUser.id).order("created_at",{ascending:false});
+  const {data:inquiries,error:inquiryError}=await db.from("property_inquiries").select("*").eq("owner_id",currentUser.id).order("created_at",{ascending:false});
   if(inquiryError)throw inquiryError;
   const inquiryList=inquiries||[];inquiryCount.textContent=inquiryList.length;ownerInquiries.innerHTML=inquiryList.length?inquiryList.map(ownerInquiryCard).join(""):'<div class="empty">No enquiries yet.</div>';
  }catch(error){ownerProperties.innerHTML=`<div class="card empty">Could not load your account data.<br><br>${esc(error.message)}</div>`}
 }
 
 function ownerPropertyCard(p){
- const image=p.image_url||fallback;
+ const image=p.photo||fallback;
  return `<article class="card property"><img src="${esc(image)}" alt="${esc(p.title)}" onerror="this.src='${fallback}'"><div class="body"><div class="price">${money(p.price)}</div><h3>${esc(p.title)}</h3><div class="meta">${esc(p.location||"")}</div><div class="meta">${esc(p.bedrooms||0)} bedrooms • ${esc(p.bathrooms||0)} bathrooms</div></div></article>`;
 }
 
