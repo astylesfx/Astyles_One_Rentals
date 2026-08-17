@@ -138,21 +138,12 @@ function openOwnerArea(){
  if(currentUser){prefillOwner();show("dashboard")}else{setAuthMode("login");show("auth")}
 }
 function prefillOwner(){
- const m=currentUser?.user_metadata||{};
+ const m=(currentUser&&currentUser.user_metadata)||{};
  ownerName.value=m.full_name||"";
  ownerPhone.value=m.phone||"";
  ownerWhatsapp.value=m.phone||"";
 }
 
-async function ensureProfile(name=""){
- if(!currentUser)return;
- const fullName=name||currentUser.user_metadata?.full_name||"";
- const phone=currentUser.user_metadata?.phone||"";
- try{
-  const {error}=await db.from("profiles").upsert({id:currentUser.id,full_name:fullName,phone:phone,role:"owner"},{onConflict:"id"});
-  if(error)console.warn("Profile update:",error.message);
- }catch(error){console.warn("Profile error:",error)}
-}
 
 async function handleAuth(e){
  e.preventDefault();
@@ -172,7 +163,7 @@ async function handleAuth(e){
    const {data,error}=await db.auth.signUp(signupData);
    if(error)throw error;
    if(data.session){
-    currentUser=data.user;await ensureProfile(name);
+    currentUser=data.user;
     authMsg.textContent="Account created successfully.";authMsg.className="message success";show("dashboard");
    }else{
     authMsg.textContent=isPhone
@@ -185,7 +176,7 @@ async function handleAuth(e){
   const loginCredentials=isPhone?{phone,password}:{email,password};
   const {data,error}=await db.auth.signInWithPassword(loginCredentials);
   if(error)throw error;
-  currentUser=data.user;await ensureProfile(currentUser?.user_metadata?.full_name||"");
+  currentUser=data.user;
   authMsg.textContent="Login successful.";authMsg.className="message success";show("dashboard");
  }catch(error){
   console.error("AUTH ERROR:",error);authMsg.textContent=error.message||"Authentication failed.";authMsg.className="message error";
