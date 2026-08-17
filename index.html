@@ -97,6 +97,8 @@ let currentUser=null,authMode="login",selectedProperty=null,homes=[];
 
 const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 const money=n=>"UGX "+Number(n||0).toLocaleString("en-UG");
+const safeValue=(el)=>el&&typeof el.value==="string"?el.value:"";
+const safeTrim=(el)=>safeValue(el).trim();
 
 function normalizePhone(value){
  let v=String(value||"").trim().replace(/[()\s-]/g,"");
@@ -209,7 +211,7 @@ async function loadHomes(){
 }
 
 function renderHomes(){
- const query=(document.getElementById("q")?.value||"").trim().toLowerCase(),max=Number(document.getElementById("max")?.value||0);
+ const query=safeTrim(document.getElementById("q")).toLowerCase(),max=Number(document.getElementById("max")?.value||0);
  const filtered=homes.filter(p=>{
   const text=[p.title,p.location,p.city,p.district,p.property_type,p.description].join(" ").toLowerCase();
   return (!query||text.includes(query))&&(!max||Number(p.price||0)<=max);
