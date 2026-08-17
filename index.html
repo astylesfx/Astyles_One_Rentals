@@ -97,8 +97,6 @@ let currentUser=null,authMode="login",selectedProperty=null,homes=[];
 
 const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 const money=n=>"UGX "+Number(n||0).toLocaleString("en-UG");
-const valueOf=id=>{const el=document.getElementById(id);return el&&typeof el.value==="string"?el.value:"";};
-const clean=id=>valueOf(id).trim();
 
 function normalizePhone(value){
  let v=String(value||"").trim().replace(/[()\s-]/g,"");
@@ -133,24 +131,14 @@ function togglePassword(){
  if(field.type==="password"){field.type="text";button.textContent="Hide"}else{field.type="password";button.textContent="Show"}
 }
 
-async function openOwnerArea(){
- if(!currentUser){
-  const {data}=await db.auth.getSession();
-  currentUser=data?.session?.user||null;
- }
- if(currentUser){
-  prefillOwner();
-  show("dashboard");
- }else{
-  setAuthMode("login");
-  show("auth");
- }
+function openOwnerArea(){
+ if(currentUser){prefillOwner();show("dashboard")}else{setAuthMode("login");show("auth")}
 }
 function prefillOwner(){
  const m=currentUser?.user_metadata||{};
  ownerName.value=m.full_name||"";
- document.getElementById("ownerPhone").value=m.phone||"";
- document.getElementById("ownerWhatsapp").value=m.phone||"";
+ ownerPhone.value=m.phone||"";
+ ownerWhatsapp.value=m.phone||"";
 }
 
 async function ensureProfile(name=""){
@@ -166,7 +154,7 @@ async function ensureProfile(name=""){
 async function handleAuth(e){
  e.preventDefault();
  authMsg.textContent="Working...";authMsg.className="message";
- const identifier=clean("authIdentifier"),password=authPassword.value,name=clean("authName");
+ const identifier=authIdentifier.value.trim(),password=authPassword.value,name=authName.value.trim();
  const phone=normalizePhone(identifier),isPhone=isValidUgandaPhone(identifier),email=identifier.toLowerCase(),isEmail=isValidEmail(email);
 
  if(!isPhone&&!isEmail){authMsg.textContent="Enter a valid email address or Uganda phone number.";authMsg.className="message error";return}
@@ -202,7 +190,7 @@ async function handleAuth(e){
 }
 
 async function forgotPassword(){
- const identifier=clean("authIdentifier");
+ const identifier=authIdentifier.value.trim();
  if(!isValidEmail(identifier)){authMsg.textContent="Password reset is sent by email. Enter your email address first.";authMsg.className="message error";return}
  authMsg.textContent="Sending reset email...";
  const {error}=await db.auth.resetPasswordForEmail(identifier.toLowerCase(),{redirectTo:location.origin});
@@ -216,9 +204,7 @@ async function loadHomes(){
  list.innerHTML='<div class="card empty">Loading homes...</div>';
  try{
   const {data,error}=await db.from("properties").select("*,property_images(image_url,is_primary,sort_order)").order("created_at",{ascending:false});
-  if(error)throw error;
-  homes=(data||[]).map(p=>({...p,photo:(p.property_images||[]).sort((a,b)=>(b.is_primary?1:0)-(a.is_primary?1:0)||(a.sort_order||0)-(b.sort_order||0))[0]?.image_url||fallback}));
-  renderHomes();
+  if(error)throw error;homes=data||[];renderHomes();
  }catch(error){list.innerHTML=`<div class="card empty">Could not load properties.<br><br>${esc(error.message)}</div>`}
 }
 
@@ -233,13 +219,13 @@ function renderHomes(){
 }
 
 function propertyCard(p){
- const image=p.photo||fallback;
+ const image=(p.property_images||[]).sort((a,b)=>(b.is_primary?1:0)-(a.is_primary?1:0)||(a.sort_order||0)-(b.sort_order||0))[0]?.image_url||fallback;
  return `<article class="card property"><img src="${esc(image)}" alt="${esc(p.title)}" onerror="this.src='${fallback}'"><div class="body"><div class="price">${money(p.price)}</div><h3>${esc(p.title)}</h3><div class="meta">${esc(p.location||"")}${p.city?", "+esc(p.city):""}</div><div class="meta">${esc(p.bedrooms??0)} bedrooms • ${esc(p.bathrooms??0)} bathrooms</div><button class="btn primary" style="width:100%" onclick="openDetails('${esc(p.id)}')">View Property</button></div></article>`;
 }
 
 function openDetails(id){
  const property=homes.find(p=>String(p.id)===String(id));if(!property)return;
- selectedProperty=property;const image=property.photo||fallback;
+ selectedProperty=property;const image=(property.property_images||[]).sort((a,b)=>(b.is_primary?1:0)-(a.is_primary?1:0)||(a.sort_order||0)-(b.sort_order||0))[0]?.image_url||fallback;
  detail.innerHTML=`<div class="card"><img class="detail-img" src="${esc(image)}" alt="${esc(property.title)}" onerror="this.src='${fallback}'"><h2>${esc(property.title)}</h2><div class="price">${money(property.price)}</div><div class="meta">${esc(property.location||"")}${property.city?", "+esc(property.city):""}</div><div class="meta">${esc(property.bedrooms||0)} bedrooms • ${esc(property.bathrooms||0)} bathrooms</div><p>${esc(property.description||"")}</p><div class="ownerbox"><strong>Contact Owner</strong><div>${esc(property.owner_name||"Property Owner")}</div><div>${esc(property.owner_phone||"")}</div></div><div class="contact-actions"><a class="btn whatsapp" target="_blank" href="${whatsappLink(property.owner_whatsapp||property.owner_phone)}">WhatsApp</a><a class="btn call" href="tel:${esc(normalizePhone(property.owner_phone))}">Call Owner</a></div><button class="btn gold" style="width:100%;margin-top:10px" onclick="openInterest()">I'm Interested</button></div>`;
  show("details");
 }
@@ -259,7 +245,7 @@ document.getElementById("interestForm").addEventListener("submit",async e=>{
  e.preventDefault();if(!selectedProperty)return;
  interestMsg.textContent="Sending inquiry...";
  try{
-  const {error}=await db.from("property_inquiries").insert({property_id:selectedProperty.id,owner_id:selectedProperty.owner_id,tenant_name:clean("tenantName"),tenant_phone:normalizePhone(valueOf("tenantPhone")),message:clean("tenantMessage"),status:"new"});
+  const {error}=await db.from("inquiries").insert({property_id:selectedProperty.id,owner_id:selectedProperty.owner_id,tenant_name:tenantName.value.trim(),tenant_phone:normalizePhone(tenantPhone.value),message:tenantMessage.value.trim(),status:"new"});
   if(error)throw error;
   interestMsg.textContent="Inquiry sent successfully.";interestMsg.className="message success";e.target.reset();
  }catch(error){interestMsg.textContent=error.message||"Could not send inquiry.";interestMsg.className="message error"}
@@ -285,15 +271,24 @@ document.getElementById("propertyForm").addEventListener("submit",async e=>{
  e.preventDefault();msg.textContent="Publishing property...";msg.className="message";
  if(!currentUser){msg.textContent="Please login as an owner first.";msg.className="message error";return}
  try{
-  const ownerPhoneValue=normalizePhone(valueOf("ownerPhone")),whatsappValue=normalizePhone(valueOf("ownerWhatsapp")||ownerPhoneValue);
+  const ownerPhoneValue=normalizePhone(ownerPhone.value),whatsappValue=normalizePhone(ownerWhatsapp.value||ownerPhoneValue);
   if(!isValidUgandaPhone(ownerPhoneValue)){msg.textContent="Enter a valid Uganda owner phone number.";msg.className="message error";return}
-  let imageUrl=null;const file=photo.files?.[0];
-  if(file){msg.textContent="Uploading property photo...";imageUrl=await uploadPropertyImage(file,currentUser.id)}
+  const file=photo.files?.[0];
   msg.textContent="Saving property...";
-  const propertyData={owner_id:currentUser.id,owner_name:clean("ownerName"),owner_phone:ownerPhoneValue,owner_whatsapp:whatsappValue,title:clean("title"),property_type:propertyType.value,location:clean("location"),city:clean("city"),district:clean("district"),price:Number(price.value),bedrooms:Number(bedrooms.value||0),bathrooms:Number(bathrooms.value||0),description:clean("description"),image_url:imageUrl};
-  const {error}=await db.from("properties").insert(propertyData).select().single();
+  // IMPORTANT: properties has no image_url column. Images belong in property_images.
+  const propertyData={owner_id:currentUser.id,owner_name:ownerName.value.trim(),owner_phone:ownerPhoneValue,owner_whatsapp:whatsappValue,title:title.value.trim(),property_type:propertyType.value,location:location.value.trim(),city:city.value.trim(),district:district.value.trim(),price:Number(price.value),bedrooms:Number(bedrooms.value||0),bathrooms:Number(bathrooms.value||0),description:description.value.trim()};
+  const {data:property,error}=await db.from("properties").insert(propertyData).select().single();
   if(error)throw error;
+
+  if(file){
+   msg.textContent="Uploading property photo...";
+   const imageUrl=await uploadPropertyImage(file,currentUser.id);
+   const {error:imageError}=await db.from("property_images").insert({property_id:property.id,image_url:imageUrl,is_primary:true,sort_order:0});
+   if(imageError)throw imageError;
+  }
+
   msg.textContent="Property published successfully.";msg.className="message success";e.target.reset();preview.style.display="none";
+  await loadDashboard();
   setTimeout(()=>show("dashboard"),800);
  }catch(error){msg.textContent=error.message||"Could not publish property.";msg.className="message error"}
 });
@@ -305,14 +300,14 @@ async function loadDashboard(){
   const {data:properties,error}=await db.from("properties").select("*").eq("owner_id",currentUser.id).order("created_at",{ascending:false});
   if(error)throw error;
   const propertyList=properties||[];propertyCount.textContent=propertyList.length;ownerProperties.innerHTML=propertyList.length?propertyList.map(ownerPropertyCard).join(""):'<div class="card empty">You have no properties yet.</div>';
-  const {data:inquiries,error:inquiryError}=await db.from("property_inquiries").select("*").eq("owner_id",currentUser.id).order("created_at",{ascending:false});
+  const {data:inquiries,error:inquiryError}=await db.from("inquiries").select("*").eq("owner_id",currentUser.id).order("created_at",{ascending:false});
   if(inquiryError)throw inquiryError;
   const inquiryList=inquiries||[];inquiryCount.textContent=inquiryList.length;ownerInquiries.innerHTML=inquiryList.length?inquiryList.map(ownerInquiryCard).join(""):'<div class="empty">No enquiries yet.</div>';
  }catch(error){ownerProperties.innerHTML=`<div class="card empty">Could not load your account data.<br><br>${esc(error.message)}</div>`}
 }
 
 function ownerPropertyCard(p){
- const image=p.photo||fallback;
+ const image=(p.property_images||[]).sort((a,b)=>(b.is_primary?1:0)-(a.is_primary?1:0)||(a.sort_order||0)-(b.sort_order||0))[0]?.image_url||fallback;
  return `<article class="card property"><img src="${esc(image)}" alt="${esc(p.title)}" onerror="this.src='${fallback}'"><div class="body"><div class="price">${money(p.price)}</div><h3>${esc(p.title)}</h3><div class="meta">${esc(p.location||"")}</div><div class="meta">${esc(p.bedrooms||0)} bedrooms • ${esc(p.bathrooms||0)} bathrooms</div></div></article>`;
 }
 
@@ -328,16 +323,6 @@ async function startApp(){
   if(currentUser)prefillOwner();
  }catch(error){console.warn("Startup error:",error)}
 }
-
-db.auth.onAuthStateChange((_event,session)=>{
- currentUser=session?.user||null;
- if(currentUser)prefillOwner();
-});
-
-db.auth.getSession().then(({data})=>{
- currentUser=data?.session?.user||null;
- if(currentUser)prefillOwner();
-}).catch(err=>console.warn("Session restore:",err));
 
 db.auth.onAuthStateChange((_event,session)=>{
  currentUser=session?.user||null;
