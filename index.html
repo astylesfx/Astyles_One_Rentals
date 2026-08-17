@@ -99,6 +99,7 @@ const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&
 const money=n=>"UGX "+Number(n||0).toLocaleString("en-UG");
 const safeValue=(el)=>el&&typeof el.value==="string"?el.value:"";
 const safeTrim=(el)=>safeValue(el).trim();
+const byId=id=>document.getElementById(id);
 
 function normalizePhone(value){
  let v=String(value||"").trim().replace(/[()\s-]/g,"");
@@ -156,7 +157,7 @@ async function ensureProfile(name=""){
 async function handleAuth(e){
  e.preventDefault();
  authMsg.textContent="Working...";authMsg.className="message";
- const identifier=authIdentifier.value.trim(),password=authPassword.value,name=authName.value.trim();
+ const identifier=safeTrim(byId("authIdentifier")),password=safeValue(byId("authPassword")),name=safeTrim(byId("authName"));
  const phone=normalizePhone(identifier),isPhone=isValidUgandaPhone(identifier),email=identifier.toLowerCase(),isEmail=isValidEmail(email);
 
  if(!isPhone&&!isEmail){authMsg.textContent="Enter a valid email address or Uganda phone number.";authMsg.className="message error";return}
@@ -192,7 +193,7 @@ async function handleAuth(e){
 }
 
 async function forgotPassword(){
- const identifier=authIdentifier.value.trim();
+ const identifier=safeTrim(byId("authIdentifier"));
  if(!isValidEmail(identifier)){authMsg.textContent="Password reset is sent by email. Enter your email address first.";authMsg.className="message error";return}
  authMsg.textContent="Sending reset email...";
  const {error}=await db.auth.resetPasswordForEmail(identifier.toLowerCase(),{redirectTo:location.origin});
@@ -247,16 +248,16 @@ document.getElementById("interestForm").addEventListener("submit",async e=>{
  e.preventDefault();if(!selectedProperty)return;
  interestMsg.textContent="Sending inquiry...";
  try{
-  const {error}=await db.from("inquiries").insert({property_id:selectedProperty.id,owner_id:selectedProperty.owner_id,tenant_name:tenantName.value.trim(),tenant_phone:normalizePhone(tenantPhone.value),message:tenantMessage.value.trim(),status:"new"});
+  const {error}=await db.from("inquiries").insert({property_id:selectedProperty.id,owner_id:selectedProperty.owner_id,tenant_name:safeTrim(byId("tenantName")),tenant_phone:normalizePhone(tenantPhone.value),message:safeTrim(byId("tenantMessage")),status:"new"});
   if(error)throw error;
-  interestMsg.textContent="Inquiry sent successfully.";interestMsg.className="message success";e.target.reset();
+  interestMsg.textContent="Inquiry sent successfully.";interestMsg.className="message success";e.currentTarget.reset();
  }catch(error){interestMsg.textContent=error.message||"Could not send inquiry.";interestMsg.className="message error"}
 });
 
 photo.addEventListener("change",()=>{
- const file=photo.files?.[0];
- if(!file){preview.style.display="none";return}
- preview.src=URL.createObjectURL(file);preview.style.display="block";
+ const file=byId("photo")?.files?.[0];
+ if(!file){byId("preview").style.display="none";return}
+ byId("preview").src=URL.createObjectURL(file);byId("preview").style.display="block";
 });
 
 async function uploadPropertyImage(file,userId){
@@ -273,12 +274,12 @@ document.getElementById("propertyForm").addEventListener("submit",async e=>{
  e.preventDefault();msg.textContent="Publishing property...";msg.className="message";
  if(!currentUser){msg.textContent="Please login as an owner first.";msg.className="message error";return}
  try{
-  const ownerPhoneValue=normalizePhone(ownerPhone.value),whatsappValue=normalizePhone(ownerWhatsapp.value||ownerPhoneValue);
+  const ownerPhoneValue=normalizePhone(safeValue(byId("ownerPhone"))),whatsappValue=normalizePhone(safeValue(byId("ownerWhatsapp"))||ownerPhoneValue);
   if(!isValidUgandaPhone(ownerPhoneValue)){msg.textContent="Enter a valid Uganda owner phone number.";msg.className="message error";return}
-  const file=photo.files?.[0];
+  const file=byId("photo")?.files?.[0];
   msg.textContent="Saving property...";
   // IMPORTANT: properties has no image_url column. Images belong in property_images.
-  const propertyData={owner_id:currentUser.id,owner_name:ownerName.value.trim(),owner_phone:ownerPhoneValue,owner_whatsapp:whatsappValue,title:title.value.trim(),property_type:propertyType.value,location:location.value.trim(),city:city.value.trim(),district:district.value.trim(),price:Number(price.value),bedrooms:Number(bedrooms.value||0),bathrooms:Number(bathrooms.value||0),description:description.value.trim()};
+  const propertyData={owner_id:currentUser.id,owner_name:safeTrim(byId("ownerName")),owner_phone:ownerPhoneValue,owner_whatsapp:whatsappValue,title:safeTrim(byId("title")),property_type:propertyType.value,location:safeTrim(byId("location")),city:safeTrim(byId("city")),district:safeTrim(byId("district")),price:Number(price.value),bedrooms:Number(bedrooms.value||0),bathrooms:Number(bathrooms.value||0),description:safeTrim(byId("description"))};
   const {data:property,error}=await db.from("properties").insert(propertyData).select().single();
   if(error)throw error;
 
@@ -289,7 +290,7 @@ document.getElementById("propertyForm").addEventListener("submit",async e=>{
    if(imageError)throw imageError;
   }
 
-  msg.textContent="Property published successfully.";msg.className="message success";e.target.reset();preview.style.display="none";
+  msg.textContent="Property published successfully.";msg.className="message success";e.currentTarget.reset();byId("preview").style.display="none";
   await loadDashboard();
   setTimeout(()=>show("dashboard"),800);
  }catch(error){msg.textContent=error.message||"Could not publish property.";msg.className="message error"}
