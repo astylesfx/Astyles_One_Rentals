@@ -97,6 +97,8 @@ let currentUser=null,authMode="login",selectedProperty=null,homes=[];
 
 const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 const money=n=>"UGX "+Number(n||0).toLocaleString("en-UG");
+const valueOf=id=>{const el=document.getElementById(id);return el&&typeof el.value==="string"?el.value:"";};
+const clean=id=>valueOf(id).trim();
 
 function normalizePhone(value){
  let v=String(value||"").trim().replace(/[()\s-]/g,"");
@@ -137,8 +139,8 @@ function openOwnerArea(){
 function prefillOwner(){
  const m=currentUser?.user_metadata||{};
  ownerName.value=m.full_name||"";
- ownerPhone.value=m.phone||"";
- ownerWhatsapp.value=m.phone||"";
+ valueOf("ownerPhone")=m.phone||"";
+ valueOf("ownerWhatsapp")=m.phone||"";
 }
 
 async function ensureProfile(name=""){
@@ -154,7 +156,7 @@ async function ensureProfile(name=""){
 async function handleAuth(e){
  e.preventDefault();
  authMsg.textContent="Working...";authMsg.className="message";
- const identifier=authIdentifier.value.trim(),password=authPassword.value,name=authName.value.trim();
+ const identifier=clean("authIdentifier"),password=authPassword.value,name=clean("authName");
  const phone=normalizePhone(identifier),isPhone=isValidUgandaPhone(identifier),email=identifier.toLowerCase(),isEmail=isValidEmail(email);
 
  if(!isPhone&&!isEmail){authMsg.textContent="Enter a valid email address or Uganda phone number.";authMsg.className="message error";return}
@@ -190,7 +192,7 @@ async function handleAuth(e){
 }
 
 async function forgotPassword(){
- const identifier=authIdentifier.value.trim();
+ const identifier=clean("authIdentifier");
  if(!isValidEmail(identifier)){authMsg.textContent="Password reset is sent by email. Enter your email address first.";authMsg.className="message error";return}
  authMsg.textContent="Sending reset email...";
  const {error}=await db.auth.resetPasswordForEmail(identifier.toLowerCase(),{redirectTo:location.origin});
@@ -245,7 +247,7 @@ document.getElementById("interestForm").addEventListener("submit",async e=>{
  e.preventDefault();if(!selectedProperty)return;
  interestMsg.textContent="Sending inquiry...";
  try{
-  const {error}=await db.from("inquiries").insert({property_id:selectedProperty.id,owner_id:selectedProperty.owner_id,tenant_name:tenantName.value.trim(),tenant_phone:normalizePhone(tenantPhone.value),message:tenantMessage.value.trim(),status:"new"});
+  const {error}=await db.from("inquiries").insert({property_id:selectedProperty.id,owner_id:selectedProperty.owner_id,tenant_name:clean("tenantName"),tenant_phone:normalizePhone(valueOf("tenantPhone")),message:clean("tenantMessage"),status:"new"});
   if(error)throw error;
   interestMsg.textContent="Inquiry sent successfully.";interestMsg.className="message success";e.target.reset();
  }catch(error){interestMsg.textContent=error.message||"Could not send inquiry.";interestMsg.className="message error"}
@@ -271,12 +273,12 @@ document.getElementById("propertyForm").addEventListener("submit",async e=>{
  e.preventDefault();msg.textContent="Publishing property...";msg.className="message";
  if(!currentUser){msg.textContent="Please login as an owner first.";msg.className="message error";return}
  try{
-  const ownerPhoneValue=normalizePhone(ownerPhone.value),whatsappValue=normalizePhone(ownerWhatsapp.value||ownerPhoneValue);
+  const ownerPhoneValue=normalizePhone(valueOf("ownerPhone")),whatsappValue=normalizePhone(valueOf("ownerWhatsapp")||ownerPhoneValue);
   if(!isValidUgandaPhone(ownerPhoneValue)){msg.textContent="Enter a valid Uganda owner phone number.";msg.className="message error";return}
   let imageUrl=null;const file=photo.files?.[0];
   if(file){msg.textContent="Uploading property photo...";imageUrl=await uploadPropertyImage(file,currentUser.id)}
   msg.textContent="Saving property...";
-  const propertyData={owner_id:currentUser.id,owner_name:ownerName.value.trim(),owner_phone:ownerPhoneValue,owner_whatsapp:whatsappValue,title:title.value.trim(),property_type:propertyType.value,location:location.value.trim(),city:city.value.trim(),district:district.value.trim(),price:Number(price.value),bedrooms:Number(bedrooms.value||0),bathrooms:Number(bathrooms.value||0),description:description.value.trim(),image_url:imageUrl};
+  const propertyData={owner_id:currentUser.id,owner_name:clean("ownerName"),owner_phone:ownerPhoneValue,owner_whatsapp:whatsappValue,title:clean("title"),property_type:propertyType.value,location:clean("location"),city:clean("city"),district:clean("district"),price:Number(price.value),bedrooms:Number(bedrooms.value||0),bathrooms:Number(bathrooms.value||0),description:clean("description"),image_url:imageUrl};
   const {error}=await db.from("properties").insert(propertyData).select().single();
   if(error)throw error;
   msg.textContent="Property published successfully.";msg.className="message success";e.target.reset();preview.style.display="none";
