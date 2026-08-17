@@ -133,14 +133,24 @@ function togglePassword(){
  if(field.type==="password"){field.type="text";button.textContent="Hide"}else{field.type="password";button.textContent="Show"}
 }
 
-function openOwnerArea(){
- if(currentUser){prefillOwner();show("dashboard")}else{setAuthMode("login");show("auth")}
+async function openOwnerArea(){
+ if(!currentUser){
+  const {data}=await db.auth.getSession();
+  currentUser=data?.session?.user||null;
+ }
+ if(currentUser){
+  prefillOwner();
+  show("dashboard");
+ }else{
+  setAuthMode("login");
+  show("auth");
+ }
 }
 function prefillOwner(){
  const m=currentUser?.user_metadata||{};
  ownerName.value=m.full_name||"";
- valueOf("ownerPhone")=m.phone||"";
- valueOf("ownerWhatsapp")=m.phone||"";
+ document.getElementById("ownerPhone").value=m.phone||"";
+ document.getElementById("ownerWhatsapp").value=m.phone||"";
 }
 
 async function ensureProfile(name=""){
@@ -316,6 +326,16 @@ async function startApp(){
   if(currentUser)prefillOwner();
  }catch(error){console.warn("Startup error:",error)}
 }
+
+db.auth.onAuthStateChange((_event,session)=>{
+ currentUser=session?.user||null;
+ if(currentUser)prefillOwner();
+});
+
+db.auth.getSession().then(({data})=>{
+ currentUser=data?.session?.user||null;
+ if(currentUser)prefillOwner();
+}).catch(err=>console.warn("Session restore:",err));
 
 db.auth.onAuthStateChange((_event,session)=>{
  currentUser=session?.user||null;
