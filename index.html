@@ -214,23 +214,63 @@ async function loadDashboard(){
 }
 
 async function publishProperty(e){
- e.preventDefault();msg.textContent="Publishing...";if(!currentUser){msg.textContent="Please log in first.";return}
+ e.preventDefault();
+ msg.textContent="Publishing...";
+ if(!currentUser){msg.textContent="Please log in first.";return}
+
  try{
-  const {data:profile}=await db.from("profiles").select("role,full_name,phone").eq("id",currentUser.id).maybeSingle();
-  if(!profile||!["owner","admin"].includes(profile.role)){throw new Error("Owner profile is being set up. Please try Publish Property again.")}
-  const {data:p,error}=await db.from("properties").insert({owner_id:currentUser.id,title:title.value.trim(),description:description.value.trim(),property_type:propertyType.value,price:Number(price.value),bedrooms:Number(bedrooms.value||0),bathrooms:Number(bathrooms.value||0),location:location.value.trim(),city:city.value.trim(),district:district.value.trim(),status:"available",owner_name:ownerName.value.trim(),owner_phone:normalizePhone(ownerPhone.value),owner_whatsapp:normalizePhone(ownerWhatsapp.value||ownerPhone.value)}).select().single();
-  if(error)throw error;
+  // Do not block publishing with a client-side role check.
+  // Supabase RLS is the authoritative permission check and will now
+  // return the real database error instead of the misleading owner message.
+  const payload={
+   owner_id:currentUser.id,
+   title:title.value.trim(),
+   description:description.value.trim(),
+   property_type:propertyType.value,
+   price:Number(price.value),
+   bedrooms:Number(bedrooms.value||0),
+   bathrooms:Number(bathrooms.value||0),
+   location:location.value.trim(),
+   city:city.value.trim(),
+   district:district.value.trim(),
+   status:"available",
+   owner_name:ownerName.value.trim(),
+   owner_phone:normalizePhone(ownerPhone.value),
+   owner_whatsapp:normalizePhone(ownerWhatsapp.value||ownerPhone.value)
+  };
+
+  const {data:p,error}=await db.from("properties").insert(payload).select().single();
+  if(error){
+   throw new Error("Publish failed: "+(error.message||"database permission denied"));
+  }
+
   const file=photo.files[0];
   if(file){
-   const ext=(file.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"")||"jpg",path=`properties/${p.id}/${crypto.randomUUID()}.${ext}`;
+   const ext=(file.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"")||"jpg";
+   const path=`properties/${p.id}/${crypto.randomUUID()}.${ext}`;
    const up=await db.storage.from(BUCKET).upload(path,file,{upsert:false,contentType:file.type});
-   if(!up.error){
+   if(up.error){
+    // Property is already published; report the image issue separately.
+    msg.textContent="Property published, but photo upload failed: "+up.error.message;
+   }else{
     const publicUrl=db.storage.from(BUCKET).getPublicUrl(path).data.publicUrl;
-    await db.from("property_images").insert({property_id:p.id,image_url:publicUrl,is_primary:true,sort_order:0});
+    const imageInsert=await db.from("property_images").insert({
+      property_id:p.id,image_url:publicUrl,is_primary:true,sort_order:0
+    });
+    if(imageInsert.error){
+      msg.textContent="Property published, but photo record failed: "+imageInsert.error.message;
+    }
    }
   }
-  msg.textContent="Property published successfully.";e.target.reset();preview.style.display="none";await loadDashboard();setTimeout(()=>show("dashboard"),500);
- }catch(err){msg.textContent=err.message||"Could not publish property."}
+
+  if(msg.textContent==="Publishing...") msg.textContent="Property published successfully.";
+  e.target.reset();
+  preview.style.display="none";
+  await loadDashboard();
+  setTimeout(()=>show("dashboard"),800);
+ }catch(err){
+  msg.textContent=err.message||"Could not publish property.";
+ }
 }
 
 photo.addEventListener("change",e=>{const f=e.target.files[0];if(!f){preview.style.display="none";return}preview.src=URL.createObjectURL(f);preview.style.display="block"});
