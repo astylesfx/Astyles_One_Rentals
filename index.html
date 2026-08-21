@@ -540,13 +540,15 @@ byId("interestForm").addEventListener("submit",async e=>{
   }
 
   try{
-    const {error}=await db.from("inquiries").insert({
-      property_id:selectedProperty.id,
-      owner_id:selectedProperty.owner_id,
+    const {error}=await db.from("property_inquiries").insert({
+      property_id:String(selectedProperty.id),
+      owner_id:selectedProperty.owner_id||null,
+      owner_name:selectedProperty.owner_name||"Property Owner",
+      owner_phone:selectedProperty.owner_phone||null,
       tenant_name:tenantName,
       tenant_phone:tenantPhoneValue,
-      message:tenantMessage,
-      status:"new"
+      tenant_whatsapp:null,
+      message:tenantMessage||null
     });
 
     if(error)throw error;
@@ -750,7 +752,7 @@ async function loadDashboard(){
       :'<div class="card empty">You have no properties yet.</div>';
 
     const {data:inquiries,error:inquiryError}=await db
-      .from("inquiries")
+      .from("property_inquiries")
       .select("*")
       .eq("owner_id",currentUser.id)
       .order("created_at",{ascending:false});
@@ -768,7 +770,7 @@ async function loadDashboard(){
   }catch(error){
     console.error("DASHBOARD ERROR:",error);
     byId("ownerProperties").innerHTML=
-      `<div class="card empty">Could not load your account data.<br><br>${esc(error?.message)}</div>`;
+      `<div class="card empty">Could not load your account data.<br><br>${esc(error?.message||"Unknown error")}</div>`;
     byId("ownerInquiries").innerHTML="";
   }
 }
