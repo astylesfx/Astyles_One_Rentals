@@ -6,85 +6,221 @@
 <meta name="theme-color" content="#081b3a">
 <title>ASTYLES ONE Rentals</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#12213a}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#12213a}
 header{height:64px;background:#081b3a;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 16px;position:sticky;top:0;z-index:10}
-.brand{font-weight:900;letter-spacing:1.2px;font-size:19px}.topbtn{border:1px solid #e9bd3c;background:transparent;color:#fff;border-radius:10px;padding:9px 12px;font-weight:800}
-main{max-width:900px;margin:auto;padding:18px 15px 92px}.screen{display:none}.screen.active{display:block}
-.hero{min-height:72vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}.eyebrow{color:#b88708;font-weight:900;letter-spacing:2px;font-size:12px}
-.hero h1{font-size:clamp(38px,10vw,62px);line-height:1.02;margin:12px 0}.hero p{color:#60708a;font-size:17px;max-width:520px}
-.actions{width:min(420px,100%);display:grid;gap:12px;margin-top:18px}.btn{border:0;border-radius:12px;padding:14px 16px;font-weight:900;font-size:16px;cursor:pointer;text-decoration:none;text-align:center}
-.primary{background:#0b2a5b;color:#fff}.gold{background:#e9bd3c;color:#13213a}.whatsapp{background:#168c4a;color:#fff}.call{background:#e8eef7;color:#0b2a5b}
-.head{display:flex;align-items:center;justify-content:space-between;margin:6px 0 18px}.head h2{font-size:30px;margin:3px 0}
-.back{border:0;background:transparent;color:#0b2a5b;font-weight:900;cursor:pointer}.filters{display:grid;grid-template-columns:1fr 170px;gap:9px;margin-bottom:15px}
-input,select,textarea{width:100%;padding:13px;border:1px solid #d4dce8;border-radius:11px;background:#fff;font:inherit}textarea{min-height:105px;resize:vertical}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}.card{background:#fff;border:1px solid #e3e8f0;border-radius:16px;padding:15px;box-shadow:0 5px 18px rgba(16,33,59,.07)}
-.property{padding:0;overflow:hidden}.property img{width:100%;height:175px;object-fit:cover;display:block}.property .body{padding:15px}
-.price{font-size:20px;font-weight:900;color:#0b2a5b}.meta{font-size:14px;color:#66758a;margin:7px 0 13px}
-form{display:grid;gap:11px}.field label{display:block;font-size:13px;font-weight:800;margin-bottom:4px}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.message{font-weight:800;color:#0b2a5b;min-height:20px}.error{color:#b42318}.success{color:#087443}.preview{width:100%;max-height:230px;object-fit:cover;border-radius:12px;margin-top:7px;display:none}
-.detail-img{width:100%;max-height:360px;object-fit:cover;border-radius:16px}.ownerbox{background:#f5f8fc;border:1px solid #dce5f0;border-radius:12px;padding:13px;margin:14px 0}
-.ownerbox strong{display:block;font-size:16px;margin-bottom:5px}.ownerbox div{margin:3px 0}.contact-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
-.empty{padding:25px;text-align:center}.bottom{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #dce3ec;display:flex;justify-content:center;gap:4px;padding:8px 6px;z-index:20}
+.brand{font-weight:900;letter-spacing:1.2px;font-size:19px}
+.topbtn{border:1px solid #e9bd3c;background:transparent;color:#fff;border-radius:10px;padding:9px 12px;font-weight:800}
+main{max-width:900px;margin:auto;padding:18px 15px 92px}
+.screen{display:none}.screen.active{display:block}
+.hero{min-height:72vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.eyebrow{color:#b88708;font-weight:900;letter-spacing:2px;font-size:12px}
+.hero h1{font-size:clamp(38px,10vw,62px);line-height:1.02;margin:12px 0}
+.hero p{color:#60708a;font-size:17px;max-width:520px}
+.actions{width:min(420px,100%);display:grid;gap:12px;margin-top:18px}
+.btn{border:0;border-radius:12px;padding:14px 16px;font-weight:900;font-size:16px;cursor:pointer;text-decoration:none;text-align:center}
+.primary{background:#0b2a5b;color:#fff}.gold{background:#e9bd3c;color:#13213a}
+.whatsapp{background:#168c4a;color:#fff}.call{background:#e8eef7;color:#0b2a5b}
+.head{display:flex;align-items:center;justify-content:space-between;margin:6px 0 18px}
+.head h2{font-size:30px;margin:3px 0}
+.back{border:0;background:transparent;color:#0b2a5b;font-weight:900;cursor:pointer}
+.filters{display:grid;grid-template-columns:1fr 170px;gap:9px;margin-bottom:15px}
+input,select,textarea{width:100%;padding:13px;border:1px solid #d4dce8;border-radius:11px;background:#fff;font:inherit}
+textarea{min-height:105px;resize:vertical}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.card{background:#fff;border:1px solid #e3e8f0;border-radius:16px;padding:15px;box-shadow:0 5px 18px rgba(16,33,59,.07)}
+.property{padding:0;overflow:hidden}.property img{width:100%;height:175px;object-fit:cover;display:block}
+.property .body{padding:15px}.price{font-size:20px;font-weight:900;color:#0b2a5b}
+.meta{font-size:14px;color:#66758a;margin:7px 0 13px}
+form{display:grid;gap:11px}.field label{display:block;font-size:13px;font-weight:800;margin-bottom:4px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.message{font-weight:800;color:#0b2a5b;min-height:20px}.error{color:#b42318}.success{color:#087443}
+.preview{width:100%;max-height:230px;object-fit:cover;border-radius:12px;margin-top:7px;display:none}
+.detail-img{width:100%;max-height:360px;object-fit:cover;border-radius:16px}
+.ownerbox{background:#f5f8fc;border:1px solid #dce5f0;border-radius:12px;padding:13px;margin:14px 0}
+.ownerbox strong{display:block;font-size:16px;margin-bottom:5px}.ownerbox div{margin:3px 0}
+.contact-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+.empty{padding:25px;text-align:center}
+.bottom{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #dce3ec;display:flex;justify-content:center;gap:4px;padding:8px 6px;z-index:20}
 .bottom button{border:0;background:transparent;color:#0b2a5b;font-weight:900;padding:9px 10px;cursor:pointer}
 .authbox{max-width:520px;margin:20px auto}.auth-subtitle{color:#66758a;font-size:14px;margin:-5px 0 15px}
-.auth-input-wrap{position:relative}.auth-input-wrap input{padding-right:78px}.showpass{position:absolute;right:8px;top:7px;border:0;background:#eef3f9;color:#0b2a5b;border-radius:8px;padding:7px 9px;font-weight:800;cursor:pointer}
-.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}.auth-tabs button{border:1px solid #d4dce8;background:#fff;border-radius:10px;padding:12px;font-weight:900;cursor:pointer}
-.auth-tabs button.active{background:#0b2a5b;color:#fff}.owner-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-.stat{background:#f5f8fc;border:1px solid #dce5f0;border-radius:12px;padding:14px}.stat strong{display:block;font-size:22px;color:#0b2a5b}
+.auth-input-wrap{position:relative}.auth-input-wrap input{padding-right:78px}
+.showpass{position:absolute;right:8px;top:7px;border:0;background:#eef3f9;color:#0b2a5b;border-radius:8px;padding:7px 9px;font-weight:800;cursor:pointer}
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.auth-tabs button{border:1px solid #d4dce8;background:#fff;border-radius:10px;padding:12px;font-weight:900;cursor:pointer}
+.auth-tabs button.active{background:#0b2a5b;color:#fff}
+.owner-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.stat{background:#f5f8fc;border:1px solid #dce5f0;border-radius:12px;padding:14px}
+.stat strong{display:block;font-size:22px;color:#0b2a5b}
 .notice{background:#fff7dd;border:1px solid #ecd27b;border-radius:11px;padding:11px;font-size:13px;color:#665016}
 .inquiry{border:1px solid #dce5f0;border-radius:12px;padding:12px;margin-bottom:10px;background:#fff}
 @media(max-width:600px){.filters{grid-template-columns:1fr}.two{grid-template-columns:1fr 1fr}.bottom button{font-size:12px}}
 </style>
 </head>
 <body>
-<header><div class="brand">ASTYLES ONE</div><button class="topbtn" onclick="openOwnerArea()">List a House</button></header>
+<header>
+  <div class="brand">ASTYLES ONE</div>
+  <button class="topbtn" onclick="openOwnerArea()">List a House</button>
+</header>
+
 <main>
-<section id="welcome" class="screen active"><div class="hero"><div class="eyebrow">RENTALS</div><h1>Find Your Next Home</h1><p>One simple platform connecting house owners with tenants.</p><div class="actions"><button class="btn primary" onclick="show('tenant')">I'm a Tenant</button><button class="btn gold" onclick="openOwnerArea()">I'm a House Owner</button></div></div></section>
+<section id="welcome" class="screen active">
+  <div class="hero">
+    <div class="eyebrow">RENTALS</div>
+    <h1>Find Your Next Home</h1>
+    <p>One simple platform connecting house owners with tenants.</p>
+    <div class="actions">
+      <button class="btn primary" onclick="show('tenant')">I'm a Tenant</button>
+      <button class="btn gold" onclick="openOwnerArea()">I'm a House Owner</button>
+    </div>
+  </div>
+</section>
 
-<section id="tenant" class="screen"><div class="head"><div><div class="eyebrow">TENANT</div><h2>Find a home</h2></div><button class="back" onclick="show('welcome')">Back</button></div>
-<div class="filters"><input id="q" placeholder="Search location or property..." oninput="renderHomes()"><select id="max" onchange="renderHomes()"><option value="">Any rent</option><option value="1000000">Up to UGX 1M</option><option value="1500000">Up to UGX 1.5M</option><option value="2000000">Up to UGX 2M</option></select></div><div id="list" class="grid"></div></section>
+<section id="tenant" class="screen">
+  <div class="head">
+    <div><div class="eyebrow">TENANT</div><h2>Find a home</h2></div>
+    <button class="back" onclick="show('welcome')">Back</button>
+  </div>
+  <div class="filters">
+    <input id="q" placeholder="Search location or property..." oninput="renderHomes()">
+    <select id="max" onchange="renderHomes()">
+      <option value="">Any rent</option>
+      <option value="1000000">Up to UGX 1M</option>
+      <option value="1500000">Up to UGX 1.5M</option>
+      <option value="2000000">Up to UGX 2M</option>
+    </select>
+  </div>
+  <div id="list" class="grid"></div>
+</section>
 
-<section id="details" class="screen"><button class="back" onclick="show('tenant')">Back to homes</button><div id="detail" style="margin-top:12px"></div></section>
+<section id="details" class="screen">
+  <button class="back" onclick="show('tenant')">Back to homes</button>
+  <div id="detail" style="margin-top:12px"></div>
+</section>
 
-<section id="interest" class="screen"><div class="head"><div><div class="eyebrow">INQUIRY</div><h2>I'm Interested</h2></div><button class="back" onclick="show('tenant')">Back</button></div>
-<div id="interestProperty" class="card" style="margin-bottom:12px"></div><div class="card"><form id="interestForm"><div class="field"><label>Your full name</label><input id="tenantName" required></div><div class="field"><label>Your contact number</label><input id="tenantPhone" type="tel" required placeholder="+256 700 000 000"></div><div class="field"><label>Message</label><textarea id="tenantMessage" placeholder="I would like to view this property..."></textarea></div><button class="btn primary" type="submit">Send Inquiry</button><div id="interestMsg" class="message"></div></form></div></section>
+<section id="interest" class="screen">
+  <div class="head">
+    <div><div class="eyebrow">INQUIRY</div><h2>I'm Interested</h2></div>
+    <button class="back" onclick="show('tenant')">Back</button>
+  </div>
+  <div id="interestProperty" class="card" style="margin-bottom:12px"></div>
+  <div class="card">
+    <form id="interestForm">
+      <div class="field"><label>Your full name</label><input id="tenantName" required></div>
+      <div class="field"><label>Your contact number</label><input id="tenantPhone" type="tel" required placeholder="+256 700 000 000"></div>
+      <div class="field"><label>Message</label><textarea id="tenantMessage" placeholder="I would like to view this property..."></textarea></div>
+      <button class="btn primary" type="submit">Send Inquiry</button>
+      <div id="interestMsg" class="message"></div>
+    </form>
+  </div>
+</section>
 
-<section id="auth" class="screen"><div class="head"><div><div class="eyebrow">ACCOUNT</div><h2 id="authTitle">Login</h2></div><button class="back" onclick="show('welcome')">Back</button></div>
-<div class="card authbox"><div class="auth-tabs"><button id="loginTab" class="active" type="button" onclick="setAuthMode('login')">Login</button><button id="signupTab" type="button" onclick="setAuthMode('signup')">Create Account</button></div>
-<p class="auth-subtitle">Use the same box with either your email address or phone number. Phone SMS verification is not used.</p>
-<form id="authForm">
-<div class="field"><label>Email or phone number</label><input id="authIdentifier" type="text" inputmode="email" autocomplete="username" required placeholder="you@example.com or +256 7XXXXXXXX"></div>
-<div id="authNameField" class="field" style="display:none"><label>Full name</label><input id="authName" autocomplete="name"></div>
-<div class="field"><label>Password</label><div class="auth-input-wrap"><input id="authPassword" type="password" required minlength="6" autocomplete="current-password"><button class="showpass" type="button" onclick="togglePassword()">Show</button></div></div>
-<button id="forgotBtn" class="back" type="button" onclick="forgotPassword()">Forgot password?</button>
-<button id="authSubmit" class="btn primary" type="submit">Login</button>
-<div id="authMsg" class="message"></div>
-<div class="notice">Email confirmation is controlled by Supabase. Phone SMS verification is not used by this app.</div>
-</form></div></section>
+<section id="auth" class="screen">
+  <div class="head">
+    <div><div class="eyebrow">ACCOUNT</div><h2 id="authTitle">Login</h2></div>
+    <button class="back" onclick="show('welcome')">Back</button>
+  </div>
+  <div class="card authbox">
+    <div class="auth-tabs">
+      <button id="loginTab" class="active" type="button" onclick="setAuthMode('login')">Login</button>
+      <button id="signupTab" type="button" onclick="setAuthMode('signup')">Create Account</button>
+    </div>
+    <p class="auth-subtitle">Use the same box with either your email address or phone number. Phone SMS verification is not used.</p>
+    <form id="authForm">
+      <div class="field">
+        <label>Email or phone number</label>
+        <input id="authIdentifier" type="text" inputmode="email" autocomplete="username" required placeholder="you@example.com or +256 7XXXXXXXX">
+      </div>
+      <div id="authNameField" class="field" style="display:none">
+        <label>Full name</label><input id="authName" autocomplete="name">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <div class="auth-input-wrap">
+          <input id="authPassword" type="password" required minlength="6" autocomplete="current-password">
+          <button class="showpass" type="button" onclick="togglePassword()">Show</button>
+        </div>
+      </div>
+      <button id="forgotBtn" class="back" type="button" onclick="forgotPassword()">Forgot password?</button>
+      <button id="authSubmit" class="btn primary" type="submit">Login</button>
+      <div id="authMsg" class="message"></div>
+      <div class="notice">Email confirmation is controlled by Supabase. Phone SMS verification is not used by this app.</div>
+    </form>
+  </div>
+</section>
 
-<section id="dashboard" class="screen"><div class="head"><div><div class="eyebrow">MY ACCOUNT</div><h2 id="dashTitle">My Page</h2></div><button class="back" onclick="logoutOwner()">Logout</button></div>
-<div class="owner-summary"><div class="stat"><span>Properties</span><strong id="propertyCount">0</strong></div><div class="stat"><span>Enquiries</span><strong id="inquiryCount">0</strong></div></div>
-<div class="card" style="margin-bottom:14px"><button class="btn gold" style="width:100%" onclick="show('owner')">+ List a Property</button></div>
-<div id="ownerProperties" class="grid"></div>
-<div class="card" style="margin-top:14px"><div class="eyebrow">TENANT ENQUIRIES</div><h3>My enquiries</h3><div id="ownerInquiries"></div></div></section>
+<section id="dashboard" class="screen">
+  <div class="head">
+    <div><div class="eyebrow">MY ACCOUNT</div><h2 id="dashTitle">My Page</h2></div>
+    <button class="back" onclick="logoutOwner()">Logout</button>
+  </div>
+  <div class="owner-summary">
+    <div class="stat"><span>Properties</span><strong id="propertyCount">0</strong></div>
+    <div class="stat"><span>Enquiries</span><strong id="inquiryCount">0</strong></div>
+  </div>
+  <div class="card" style="margin-bottom:14px">
+    <button class="btn gold" style="width:100%" onclick="show('owner')">+ List a Property</button>
+  </div>
+  <div id="ownerProperties" class="grid"></div>
+  <div class="card" style="margin-top:14px">
+    <div class="eyebrow">TENANT ENQUIRIES</div>
+    <h3>My enquiries</h3>
+    <div id="ownerInquiries"></div>
+  </div>
+</section>
 
-<section id="owner" class="screen"><div class="head"><div><div class="eyebrow">HOUSE OWNER</div><h2>List your property</h2></div><button class="back" onclick="show('dashboard')">Back</button></div>
-<div class="card"><form id="propertyForm">
-<div class="field"><label>Owner full name</label><input id="ownerName" required></div>
-<div class="two"><div class="field"><label>Phone number</label><input id="ownerPhone" type="tel" required placeholder="+256 700 000 000"></div><div class="field"><label>WhatsApp number</label><input id="ownerWhatsapp" type="tel" placeholder="+256 700 000 000"></div></div>
-<div class="field"><label>Property title</label><input id="title" required placeholder="e.g. 2 Bedroom House"></div>
-<div class="field"><label>Property type</label><select id="propertyType"><option>House</option><option>Apartment</option><option>Room</option><option>Shop</option></select></div>
-<div class="field"><label>Location</label><input id="location" required placeholder="e.g. Ntinda, Kampala"></div>
-<div class="two"><div class="field"><label>City</label><input id="city" value="Kampala"></div><div class="field"><label>District</label><input id="district"></div></div>
-<div class="field"><label>Monthly rent (UGX)</label><input id="price" type="number" required placeholder="1200000"></div>
-<div class="two"><div class="field"><label>Bedrooms</label><input id="bedrooms" type="number" min="0" value="2"></div><div class="field"><label>Bathrooms</label><input id="bathrooms" type="number" min="0" value="1"></div></div>
-<div class="field"><label>Property photo</label><input id="photo" type="file" accept="image/*"><img id="preview" class="preview" alt="Property preview"></div>
-<div class="field"><label>Description</label><textarea id="description" required></textarea></div>
-<button class="btn primary" type="submit">Publish Property</button><div id="msg" class="message"></div>
-</form></div></section>
+<section id="owner" class="screen">
+  <div class="head">
+    <div><div class="eyebrow">HOUSE OWNER</div><h2>List your property</h2></div>
+    <button class="back" onclick="show('dashboard')">Back</button>
+  </div>
+  <div class="card">
+    <form id="propertyForm">
+      <div class="field"><label>Owner full name</label><input id="ownerName" required></div>
+      <div class="two">
+        <div class="field"><label>Phone number</label><input id="ownerPhone" type="tel" required placeholder="+256 700 000 000"></div>
+        <div class="field"><label>WhatsApp number</label><input id="ownerWhatsapp" type="tel" placeholder="+256 700 000 000"></div>
+      </div>
+      <div class="field"><label>Property title</label><input id="title" required placeholder="e.g. 2 Bedroom House"></div>
+      <div class="field">
+        <label>Property type</label>
+        <select id="propertyType" required>
+          <option value="house">House</option>
+          <option value="apartment">Apartment</option>
+          <option value="room">Room</option>
+          <option value="studio">Studio</option>
+          <option value="duplex">Duplex</option>
+          <option value="commercial">Shop / Commercial</option>
+        </select>
+      </div>
+      <div class="field"><label>Location</label><input id="location" required placeholder="e.g. Ntinda, Kampala"></div>
+      <div class="two">
+        <div class="field"><label>City</label><input id="city" value="Kampala"></div>
+        <div class="field"><label>District</label><input id="district"></div>
+      </div>
+      <div class="field"><label>Monthly rent (UGX)</label><input id="price" type="number" required placeholder="1200000"></div>
+      <div class="two">
+        <div class="field"><label>Bedrooms</label><input id="bedrooms" type="number" min="0" value="2"></div>
+        <div class="field"><label>Bathrooms</label><input id="bathrooms" type="number" min="0" value="1"></div>
+      </div>
+      <div class="field">
+        <label>Property photo</label>
+        <input id="photo" type="file" accept="image/*">
+        <img id="preview" class="preview" alt="Property preview">
+      </div>
+      <div class="field"><label>Description</label><textarea id="description" required></textarea></div>
+      <button class="btn primary" type="submit">Publish Property</button>
+      <div id="msg" class="message"></div>
+    </form>
+  </div>
+</section>
 </main>
 
-<nav class="bottom"><button onclick="show('welcome')">Home</button><button onclick="show('tenant')">Find Homes</button><button onclick="openOwnerArea()">My Account</button></nav>
+<nav class="bottom">
+  <button onclick="show('welcome')">Home</button>
+  <button onclick="show('tenant')">Find Homes</button>
+  <button onclick="openOwnerArea()">My Account</button>
+</nav>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
@@ -93,237 +229,600 @@ const SUPABASE_ANON_KEY="sb_publishable_ZqNijNG9un-1zCquD7Ju7w_JZ4VGxV5";
 const db=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
 const BUCKET="property-images";
 const fallback="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=900&q=80";
-let currentUser=null,authMode="login",selectedProperty=null,homes=[];
+
+let currentUser=null;
+let authMode="login";
+let selectedProperty=null;
+let homes=[];
 
 const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 const money=n=>"UGX "+Number(n||0).toLocaleString("en-UG");
-const safeValue=(el)=>el&&typeof el.value==="string"?el.value:"";
-const safeTrim=(el)=>safeValue(el).trim();
+const safeValue=el=>el&&typeof el.value==="string"?el.value:"";
+const safeTrim=el=>safeValue(el).trim();
 const byId=id=>document.getElementById(id);
 
 function normalizePhone(value){
- let v=String(value||"").trim().replace(/[()\s-]/g,"");
- if(/^07\d{8}$/.test(v))return "+256"+v.slice(1);
- if(/^2567\d{8}$/.test(v))return "+"+v;
- return v;
+  let v=String(value||"").trim().replace(/[()\s-]/g,"");
+  if(/^07\d{8}$/.test(v)) return "+256"+v.slice(1);
+  if(/^2567\d{8}$/.test(v)) return "+"+v;
+  return v;
 }
-function isValidUgandaPhone(value){return /^\+2567\d{8}$/.test(normalizePhone(value));}
-function isValidEmail(value){return /^\S+@\S+\.\S+$/.test(String(value||"").trim());}
+
+function isValidUgandaPhone(value){
+  return /^\+2567\d{8}$/.test(normalizePhone(value));
+}
+
+function isValidEmail(value){
+  return /^\S+@\S+\.\S+$/.test(String(value||"").trim());
+}
 
 function show(id){
- document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
- const target=document.getElementById(id);if(target)target.classList.add("active");
- window.scrollTo(0,0);
- if(id==="tenant")loadHomes();
- if(id==="dashboard")loadDashboard();
+  document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
+  const target=document.getElementById(id);
+  if(target) target.classList.add("active");
+  window.scrollTo(0,0);
+  if(id==="tenant") loadHomes();
+  if(id==="dashboard") loadDashboard();
 }
 
 function setAuthMode(mode){
- authMode=mode;
- loginTab.classList.toggle("active",mode==="login");
- signupTab.classList.toggle("active",mode==="signup");
- authTitle.textContent=mode==="login"?"Login":"Create Account";
- authSubmit.textContent=mode==="login"?"Login":"Create Account";
- authNameField.style.display=mode==="signup"?"block":"none";
- forgotBtn.style.display=mode==="login"?"block":"none";
- authMsg.textContent="";
+  authMode=mode;
+  byId("loginTab").classList.toggle("active",mode==="login");
+  byId("signupTab").classList.toggle("active",mode==="signup");
+  byId("authTitle").textContent=mode==="login"?"Login":"Create Account";
+  byId("authSubmit").textContent=mode==="login"?"Login":"Create Account";
+  byId("authNameField").style.display=mode==="signup"?"block":"none";
+  byId("forgotBtn").style.display=mode==="login"?"block":"none";
+  byId("authMsg").textContent="";
 }
 
 function togglePassword(){
- const field=document.getElementById("authPassword"),button=document.querySelector(".showpass");
- if(field.type==="password"){field.type="text";button.textContent="Hide"}else{field.type="password";button.textContent="Show"}
+  const field=byId("authPassword");
+  const button=document.querySelector(".showpass");
+  if(!field||!button)return;
+  if(field.type==="password"){field.type="text";button.textContent="Hide"}
+  else{field.type="password";button.textContent="Show"}
 }
 
 function openOwnerArea(){
- if(currentUser){prefillOwner();show("dashboard")}else{setAuthMode("login");show("auth")}
-}
-function prefillOwner(){
- const m=(currentUser&&currentUser.user_metadata)||{};
- ownerName.value=m.full_name||"";
- ownerPhone.value=m.phone||"";
- ownerWhatsapp.value=m.phone||"";
+  if(currentUser){
+    prefillOwner();
+    show("dashboard");
+  }else{
+    setAuthMode("login");
+    show("auth");
+  }
 }
 
+function prefillOwner(){
+  if(!currentUser)return;
+  const m=currentUser.user_metadata||{};
+  const name=byId("ownerName");
+  const phone=byId("ownerPhone");
+  const whatsapp=byId("ownerWhatsapp");
+  if(name)name.value=m.full_name||"";
+  if(phone)phone.value=m.phone||"";
+  if(whatsapp)whatsapp.value=m.phone||"";
+}
 
 async function handleAuth(e){
- e.preventDefault();
- authMsg.textContent="Working...";authMsg.className="message";
- const identifier=safeTrim(byId("authIdentifier")),password=safeValue(byId("authPassword")),name=safeTrim(byId("authName"));
- const phone=normalizePhone(identifier),isPhone=isValidUgandaPhone(identifier),email=identifier.toLowerCase(),isEmail=isValidEmail(email);
+  e.preventDefault();
 
- if(!isPhone&&!isEmail){authMsg.textContent="Enter a valid email address or Uganda phone number.";authMsg.className="message error";return}
- if(password.length<6){authMsg.textContent="Password must be at least 6 characters.";authMsg.className="message error";return}
+  const authMsg=byId("authMsg");
+  authMsg.textContent="Working...";
+  authMsg.className="message";
 
- try{
-  if(authMode==="signup"){
-   if(!name){authMsg.textContent="Enter your full name.";authMsg.className="message error";return}
-   const signupData=isPhone
-    ?{phone,password,options:{data:{full_name:name,phone,role:"owner"}}}
-    :{email,password,options:{data:{full_name:name,role:"owner"}}};
-   const {data,error}=await db.auth.signUp(signupData);
-   if(error)throw error;
-   if(data.session){
-    currentUser=data.user;
-    authMsg.textContent="Account created successfully.";authMsg.className="message success";show("dashboard");
-   }else{
-    authMsg.textContent=isPhone
-     ?"Account created. If phone confirmation is enabled in Supabase, disable it to use phone login without SMS verification."
-     :"Account created. Check your email if confirmation is enabled in Supabase.";
-   }
-   return;
+  const identifier=safeTrim(byId("authIdentifier"));
+  const password=safeValue(byId("authPassword"));
+  const name=safeTrim(byId("authName"));
+
+  const phone=normalizePhone(identifier);
+  const isPhone=isValidUgandaPhone(identifier);
+  const email=identifier.toLowerCase();
+  const isEmail=isValidEmail(email);
+
+  if(!isPhone&&!isEmail){
+    authMsg.textContent="Enter a valid email address or Uganda phone number.";
+    authMsg.className="message error";
+    return;
   }
 
-  const loginCredentials=isPhone?{phone,password}:{email,password};
-  const {data,error}=await db.auth.signInWithPassword(loginCredentials);
-  if(error)throw error;
-  currentUser=data.user;
-  authMsg.textContent="Login successful.";authMsg.className="message success";show("dashboard");
- }catch(error){
-  console.error("AUTH ERROR:",error);authMsg.textContent=error.message||"Authentication failed.";authMsg.className="message error";
- }
+  if(password.length<6){
+    authMsg.textContent="Password must be at least 6 characters.";
+    authMsg.className="message error";
+    return;
+  }
+
+  try{
+    if(authMode==="signup"){
+      if(!name){
+        authMsg.textContent="Enter your full name.";
+        authMsg.className="message error";
+        return;
+      }
+
+      const signupData=isPhone
+        ?{phone,password,options:{data:{full_name:name,phone,role:"owner"}}}
+        :{email,password,options:{data:{full_name:name,role:"owner"}}};
+
+      const {data,error}=await db.auth.signUp(signupData);
+      if(error)throw error;
+
+      if(data.session){
+        currentUser=data.user;
+        prefillOwner();
+        authMsg.textContent="Account created successfully.";
+        authMsg.className="message success";
+        show("dashboard");
+      }else{
+        authMsg.textContent=isPhone
+          ?"Account created. Phone SMS verification must be disabled in Supabase for direct phone login."
+          :"Account created. Check your email to confirm the account if email confirmation is enabled in Supabase.";
+        authMsg.className="message success";
+      }
+      return;
+    }
+
+    const loginCredentials=isPhone?{phone,password}:{email,password};
+    const {data,error}=await db.auth.signInWithPassword(loginCredentials);
+    if(error)throw error;
+
+    currentUser=data.user;
+    prefillOwner();
+    authMsg.textContent="Login successful.";
+    authMsg.className="message success";
+    show("dashboard");
+
+  }catch(error){
+    console.error("AUTH ERROR:",error);
+    authMsg.textContent=error?.message||"Authentication failed.";
+    authMsg.className="message error";
+  }
 }
 
 async function forgotPassword(){
- const identifier=safeTrim(byId("authIdentifier"));
- if(!isValidEmail(identifier)){authMsg.textContent="Password reset is sent by email. Enter your email address first.";authMsg.className="message error";return}
- authMsg.textContent="Sending reset email...";
- const {error}=await db.auth.resetPasswordForEmail(identifier.toLowerCase(),{redirectTo:location.origin});
- if(error){authMsg.textContent=error.message||"Could not send reset email.";authMsg.className="message error"}
- else{authMsg.textContent="Reset email sent. Check your inbox.";authMsg.className="message success"}
+  const authMsg=byId("authMsg");
+  const identifier=safeTrim(byId("authIdentifier"));
+
+  if(!isValidEmail(identifier)){
+    authMsg.textContent="Password reset is sent by email. Enter your email address first.";
+    authMsg.className="message error";
+    return;
+  }
+
+  authMsg.textContent="Sending reset email...";
+  const {error}=await db.auth.resetPasswordForEmail(identifier.toLowerCase(),{
+    redirectTo:location.origin
+  });
+
+  if(error){
+    authMsg.textContent=error.message||"Could not send reset email.";
+    authMsg.className="message error";
+  }else{
+    authMsg.textContent="Reset email sent. Check your inbox.";
+    authMsg.className="message success";
+  }
 }
 
-async function logoutOwner(){await db.auth.signOut();currentUser=null;show("welcome")}
+async function logoutOwner(){
+  await db.auth.signOut();
+  currentUser=null;
+  show("welcome");
+}
 
 async function loadHomes(){
- list.innerHTML='<div class="card empty">Loading homes...</div>';
- try{
-  const {data,error}=await db.from("properties").select("*,property_images(image_url,is_primary,sort_order)").order("created_at",{ascending:false});
-  if(error)throw error;homes=data||[];renderHomes();
- }catch(error){list.innerHTML=`<div class="card empty">Could not load properties.<br><br>${esc(error.message)}</div>`}
+  const list=byId("list");
+  if(!list)return;
+
+  list.innerHTML='<div class="card empty">Loading homes...</div>';
+
+  try{
+    const {data,error}=await db
+      .from("properties")
+      .select("*,property_images(image_url,is_primary,sort_order)")
+      .order("created_at",{ascending:false});
+
+    if(error)throw error;
+
+    homes=data||[];
+    renderHomes();
+  }catch(error){
+    list.innerHTML=`<div class="card empty">Could not load properties.<br><br>${esc(error?.message)}</div>`;
+  }
 }
 
 function renderHomes(){
- const query=safeTrim(document.getElementById("q")).toLowerCase(),max=Number(document.getElementById("max")?.value||0);
- const filtered=homes.filter(p=>{
-  const text=[p.title,p.location,p.city,p.district,p.property_type,p.description].join(" ").toLowerCase();
-  return (!query||text.includes(query))&&(!max||Number(p.price||0)<=max);
- });
- if(!filtered.length){list.innerHTML='<div class="card empty">No properties found.</div>';return}
- list.innerHTML=filtered.map(propertyCard).join("");
+  const q=safeTrim(byId("q")).toLowerCase();
+  const max=Number(byId("max")?.value||0);
+
+  const filtered=homes.filter(p=>{
+    const text=[
+      p.title,p.location,p.city,p.district,p.property_type,p.description
+    ].join(" ").toLowerCase();
+
+    return (!q||text.includes(q))&&(!max||Number(p.price||0)<=max);
+  });
+
+  if(!filtered.length){
+    byId("list").innerHTML='<div class="card empty">No properties found.</div>';
+    return;
+  }
+
+  byId("list").innerHTML=filtered.map(propertyCard).join("");
+}
+
+function getPropertyImage(p){
+  const images=Array.isArray(p?.property_images)?p.property_images:[];
+  const sorted=images.slice().sort((a,b)=>
+    (b.is_primary?1:0)-(a.is_primary?1:0)||
+    (Number(a.sort_order)||0)-(Number(b.sort_order)||0)
+  );
+  return sorted[0]?.image_url||fallback;
 }
 
 function propertyCard(p){
- const image=(p.property_images||[]).sort((a,b)=>(b.is_primary?1:0)-(a.is_primary?1:0)||(a.sort_order||0)-(b.sort_order||0))[0]?.image_url||fallback;
- return `<article class="card property"><img src="${esc(image)}" alt="${esc(p.title)}" onerror="this.src='${fallback}'"><div class="body"><div class="price">${money(p.price)}</div><h3>${esc(p.title)}</h3><div class="meta">${esc(p.location||"")}${p.city?", "+esc(p.city):""}</div><div class="meta">${esc(p.bedrooms??0)} bedrooms • ${esc(p.bathrooms??0)} bathrooms</div><button class="btn primary" style="width:100%" onclick="openDetails('${esc(p.id)}')">View Property</button></div></article>`;
+  const image=getPropertyImage(p);
+
+  return `<article class="card property">
+    <img src="${esc(image)}" alt="${esc(p.title)}" onerror="this.src='${fallback}'">
+    <div class="body">
+      <div class="price">${money(p.price)}</div>
+      <h3>${esc(p.title)}</h3>
+      <div class="meta">${esc(p.location||"")}${p.city?", "+esc(p.city):""}</div>
+      <div class="meta">${esc(p.bedrooms??0)} bedrooms • ${esc(p.bathrooms??0)} bathrooms</div>
+      <button class="btn primary" style="width:100%" onclick="openDetails('${esc(p.id)}')">View Property</button>
+    </div>
+  </article>`;
 }
 
 function openDetails(id){
- const property=homes.find(p=>String(p.id)===String(id));if(!property)return;
- selectedProperty=property;const image=(property.property_images||[]).sort((a,b)=>(b.is_primary?1:0)-(a.is_primary?1:0)||(a.sort_order||0)-(b.sort_order||0))[0]?.image_url||fallback;
- detail.innerHTML=`<div class="card"><img class="detail-img" src="${esc(image)}" alt="${esc(property.title)}" onerror="this.src='${fallback}'"><h2>${esc(property.title)}</h2><div class="price">${money(property.price)}</div><div class="meta">${esc(property.location||"")}${property.city?", "+esc(property.city):""}</div><div class="meta">${esc(property.bedrooms||0)} bedrooms • ${esc(property.bathrooms||0)} bathrooms</div><p>${esc(property.description||"")}</p><div class="ownerbox"><strong>Contact Owner</strong><div>${esc(property.owner_name||"Property Owner")}</div><div>${esc(property.owner_phone||"")}</div></div><div class="contact-actions"><a class="btn whatsapp" target="_blank" href="${whatsappLink(property.owner_whatsapp||property.owner_phone)}">WhatsApp</a><a class="btn call" href="tel:${esc(normalizePhone(property.owner_phone))}">Call Owner</a></div><button class="btn gold" style="width:100%;margin-top:10px" onclick="openInterest()">I'm Interested</button></div>`;
- show("details");
+  const property=homes.find(p=>String(p.id)===String(id));
+  if(!property)return;
+
+  selectedProperty=property;
+  const image=getPropertyImage(property);
+  const detail=byId("detail");
+
+  detail.innerHTML=`<div class="card">
+    <img class="detail-img" src="${esc(image)}" alt="${esc(property.title)}" onerror="this.src='${fallback}'">
+    <h2>${esc(property.title)}</h2>
+    <div class="price">${money(property.price)}</div>
+    <div class="meta">${esc(property.location||"")}${property.city?", "+esc(property.city):""}</div>
+    <div class="meta">${esc(property.bedrooms||0)} bedrooms • ${esc(property.bathrooms||0)} bathrooms</div>
+    <p>${esc(property.description||"")}</p>
+    <div class="ownerbox">
+      <strong>Contact Owner</strong>
+      <div>${esc(property.owner_name||"Property Owner")}</div>
+      <div>${esc(property.owner_phone||"")}</div>
+    </div>
+    <div class="contact-actions">
+      <a class="btn whatsapp" target="_blank" href="${whatsappLink(property.owner_whatsapp||property.owner_phone)}">WhatsApp</a>
+      <a class="btn call" href="tel:${esc(normalizePhone(property.owner_phone))}">Call Owner</a>
+    </div>
+    <button class="btn gold" style="width:100%;margin-top:10px" onclick="openInterest()">I'm Interested</button>
+  </div>`;
+
+  show("details");
 }
 
 function whatsappLink(number){
- const phone=normalizePhone(number).replace("+","");
- return phone?"https://wa.me/"+phone:"#";
+  const phone=normalizePhone(number).replace("+","");
+  return phone?"https://wa.me/"+phone:"#";
 }
 
 function openInterest(){
- if(!selectedProperty)return;
- interestProperty.innerHTML=`<strong>${esc(selectedProperty.title)}</strong><div class="price">${money(selectedProperty.price)}</div><div class="meta">${esc(selectedProperty.location||"")}</div>`;
- show("interest");
+  if(!selectedProperty)return;
+
+  byId("interestProperty").innerHTML=
+    `<strong>${esc(selectedProperty.title)}</strong>
+     <div class="price">${money(selectedProperty.price)}</div>
+     <div class="meta">${esc(selectedProperty.location||"")}</div>`;
+
+  show("interest");
 }
 
-document.getElementById("interestForm").addEventListener("submit",async e=>{
- e.preventDefault();if(!selectedProperty)return;
- interestMsg.textContent="Sending inquiry...";
- try{
-  const {error}=await db.from("inquiries").insert({property_id:selectedProperty.id,owner_id:selectedProperty.owner_id,tenant_name:safeTrim(byId("tenantName")),tenant_phone:normalizePhone(tenantPhone.value),message:safeTrim(byId("tenantMessage")),status:"new"});
-  if(error)throw error;
-  interestMsg.textContent="Inquiry sent successfully.";interestMsg.className="message success";e.currentTarget.reset();
- }catch(error){interestMsg.textContent=error.message||"Could not send inquiry.";interestMsg.className="message error"}
+byId("interestForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  if(!selectedProperty)return;
+
+  const interestMsg=byId("interestMsg");
+  const tenantName=safeTrim(byId("tenantName"));
+  const tenantPhoneValue=normalizePhone(safeValue(byId("tenantPhone")));
+  const tenantMessage=safeTrim(byId("tenantMessage"));
+
+  interestMsg.textContent="Sending inquiry...";
+  interestMsg.className="message";
+
+  if(!tenantName||!isValidUgandaPhone(tenantPhoneValue)){
+    interestMsg.textContent="Enter your name and a valid Uganda phone number.";
+    interestMsg.className="message error";
+    return;
+  }
+
+  try{
+    const {error}=await db.from("inquiries").insert({
+      property_id:selectedProperty.id,
+      owner_id:selectedProperty.owner_id,
+      tenant_name:tenantName,
+      tenant_phone:tenantPhoneValue,
+      message:tenantMessage,
+      status:"new"
+    });
+
+    if(error)throw error;
+
+    interestMsg.textContent="Inquiry sent successfully.";
+    interestMsg.className="message success";
+    e.currentTarget.reset();
+
+  }catch(error){
+    interestMsg.textContent=error?.message||"Could not send inquiry.";
+    interestMsg.className="message error";
+  }
 });
 
-photo.addEventListener("change",()=>{
- const file=byId("photo")?.files?.[0];
- if(!file){byId("preview").style.display="none";return}
- byId("preview").src=URL.createObjectURL(file);byId("preview").style.display="block";
+byId("photo").addEventListener("change",()=>{
+  const file=byId("photo")?.files?.[0];
+  const preview=byId("preview");
+
+  if(!file){
+    preview.style.display="none";
+    preview.removeAttribute("src");
+    return;
+  }
+
+  preview.src=URL.createObjectURL(file);
+  preview.style.display="block";
 });
 
 async function uploadPropertyImage(file,userId){
- if(!file)return null;
- const extension=file.name.split(".").pop().toLowerCase();
- const path=userId+"/"+Date.now()+"-"+Math.random().toString(36).substring(2)+"."+extension;
- const {error}=await db.storage.from(BUCKET).upload(path,file,{upsert:false,contentType:file.type});
- if(error)throw error;
- const {data}=db.storage.from(BUCKET).getPublicUrl(path);
- return data.publicUrl;
-}
+  if(!file)return null;
 
-document.getElementById("propertyForm").addEventListener("submit",async e=>{
- e.preventDefault();msg.textContent="Publishing property...";msg.className="message";
- if(!currentUser){msg.textContent="Please login as an owner first.";msg.className="message error";return}
- try{
-  const ownerPhoneValue=normalizePhone(safeValue(byId("ownerPhone"))),whatsappValue=normalizePhone(safeValue(byId("ownerWhatsapp"))||ownerPhoneValue);
-  if(!isValidUgandaPhone(ownerPhoneValue)){msg.textContent="Enter a valid Uganda owner phone number.";msg.className="message error";return}
-  const file=byId("photo")?.files?.[0];
-  msg.textContent="Saving property...";
-  // IMPORTANT: properties has no image_url column. Images belong in property_images.
-  const propertyData={owner_id:currentUser.id,owner_name:safeTrim(byId("ownerName")),owner_phone:ownerPhoneValue,owner_whatsapp:whatsappValue,title:safeTrim(byId("title")),property_type:propertyType.value,location:safeTrim(byId("location")),city:safeTrim(byId("city")),district:safeTrim(byId("district")),price:Number(price.value),bedrooms:Number(bedrooms.value||0),bathrooms:Number(bathrooms.value||0),description:safeTrim(byId("description"))};
-  const {data:property,error}=await db.from("properties").insert(propertyData).select().single();
+  const extension=(file.name.split(".").pop()||"jpg").toLowerCase();
+  const path=userId+"/"+Date.now()+"-"+Math.random().toString(36).substring(2)+"."+extension;
+
+  const {error}=await db.storage.from(BUCKET).upload(path,file,{
+    upsert:false,
+    contentType:file.type
+  });
+
   if(error)throw error;
 
-  if(file){
-   msg.textContent="Uploading property photo...";
-   const imageUrl=await uploadPropertyImage(file,currentUser.id);
-   const {error:imageError}=await db.from("property_images").insert({property_id:property.id,image_url:imageUrl,is_primary:true,sort_order:0});
-   if(imageError)throw imageError;
+  const {data}=db.storage.from(BUCKET).getPublicUrl(path);
+  return data.publicUrl;
+}
+
+function getPropertyTypeValue(){
+  const raw=safeTrim(byId("propertyType")).toLowerCase();
+
+  const typeMap={
+    house:"house",
+    apartment:"apartment",
+    room:"room",
+    studio:"studio",
+    duplex:"duplex",
+    shop:"commercial",
+    commercial:"commercial"
+  };
+
+  return typeMap[raw]||"house";
+}
+
+byId("propertyForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+
+  const msg=byId("msg");
+  msg.textContent="Publishing property...";
+  msg.className="message";
+
+  if(!currentUser){
+    msg.textContent="Please login as an owner first.";
+    msg.className="message error";
+    return;
   }
 
-  msg.textContent="Property published successfully.";msg.className="message success";e.currentTarget.reset();byId("preview").style.display="none";
-  await loadDashboard();
-  setTimeout(()=>show("dashboard"),800);
- }catch(error){msg.textContent=error.message||"Could not publish property.";msg.className="message error"}
+  try{
+    const ownerPhoneValue=normalizePhone(safeValue(byId("ownerPhone")));
+    const whatsappValue=normalizePhone(
+      safeValue(byId("ownerWhatsapp"))||ownerPhoneValue
+    );
+
+    if(!isValidUgandaPhone(ownerPhoneValue)){
+      msg.textContent="Enter a valid Uganda owner phone number.";
+      msg.className="message error";
+      return;
+    }
+
+    const title=safeTrim(byId("title"));
+    const location=safeTrim(byId("location"));
+    const city=safeTrim(byId("city"));
+    const district=safeTrim(byId("district"));
+    const description=safeTrim(byId("description"));
+    const priceValue=Number(safeValue(byId("price")));
+    const bedroomsValue=Number(safeValue(byId("bedrooms"))||0);
+    const bathroomsValue=Number(safeValue(byId("bathrooms"))||0);
+    const ownerNameValue=safeTrim(byId("ownerName"));
+    const file=byId("photo")?.files?.[0];
+
+    if(!ownerNameValue||!title||!location||!description||!priceValue){
+      msg.textContent="Please complete all required property fields.";
+      msg.className="message error";
+      return;
+    }
+
+    const propertyTypeValue=getPropertyTypeValue();
+
+    /*
+      IMPORTANT:
+      - properties does NOT use image_url.
+      - The image is uploaded to Supabase Storage.
+      - The resulting URL is inserted into property_images.image_url.
+      - property_type is normalized to the database CHECK constraint.
+    */
+    const propertyData={
+      owner_id:currentUser.id,
+      owner_name:ownerNameValue,
+      owner_phone:ownerPhoneValue,
+      owner_whatsapp:whatsappValue,
+      title:title,
+      property_type:propertyTypeValue,
+      location:location,
+      city:city,
+      district:district,
+      price:priceValue,
+      bedrooms:bedroomsValue,
+      bathrooms:bathroomsValue,
+      description:description
+    };
+
+    msg.textContent="Saving property...";
+
+    const {data:property,error}=await db
+      .from("properties")
+      .insert(propertyData)
+      .select()
+      .single();
+
+    if(error)throw error;
+
+    if(file){
+      msg.textContent="Uploading property photo...";
+
+      const imageUrl=await uploadPropertyImage(file,currentUser.id);
+
+      if(imageUrl){
+        const {error:imageError}=await db
+          .from("property_images")
+          .insert({
+            property_id:property.id,
+            image_url:imageUrl,
+            is_primary:true,
+            sort_order:0
+          });
+
+        if(imageError)throw imageError;
+      }
+    }
+
+    msg.textContent="Property published successfully.";
+    msg.className="message success";
+
+    e.currentTarget.reset();
+    byId("city").value="Kampala";
+    byId("bedrooms").value="2";
+    byId("bathrooms").value="1";
+    byId("preview").style.display="none";
+    byId("preview").removeAttribute("src");
+
+    await loadDashboard();
+    setTimeout(()=>show("dashboard"),800);
+
+  }catch(error){
+    console.error("PROPERTY PUBLISH ERROR:",error);
+    msg.textContent=error?.message||"Could not publish property.";
+    msg.className="message error";
+  }
 });
 
 async function loadDashboard(){
- if(!currentUser){show("auth");return}
- dashTitle.textContent=currentUser.user_metadata?.full_name||"My Account";
- try{
-  const {data:properties,error}=await db.from("properties").select("*").eq("owner_id",currentUser.id).order("created_at",{ascending:false});
-  if(error)throw error;
-  const propertyList=properties||[];propertyCount.textContent=propertyList.length;ownerProperties.innerHTML=propertyList.length?propertyList.map(ownerPropertyCard).join(""):'<div class="card empty">You have no properties yet.</div>';
-  const {data:inquiries,error:inquiryError}=await db.from("inquiries").select("*").eq("owner_id",currentUser.id).order("created_at",{ascending:false});
-  if(inquiryError)throw inquiryError;
-  const inquiryList=inquiries||[];inquiryCount.textContent=inquiryList.length;ownerInquiries.innerHTML=inquiryList.length?inquiryList.map(ownerInquiryCard).join(""):'<div class="empty">No enquiries yet.</div>';
- }catch(error){ownerProperties.innerHTML=`<div class="card empty">Could not load your account data.<br><br>${esc(error.message)}</div>`}
+  if(!currentUser){
+    show("auth");
+    return;
+  }
+
+  byId("dashTitle").textContent=currentUser.user_metadata?.full_name||"My Account";
+
+  try{
+    const {data:properties,error}=await db
+      .from("properties")
+      .select("*,property_images(image_url,is_primary,sort_order)")
+      .eq("owner_id",currentUser.id)
+      .order("created_at",{ascending:false});
+
+    if(error)throw error;
+
+    const propertyList=properties||[];
+    byId("propertyCount").textContent=propertyList.length;
+
+    byId("ownerProperties").innerHTML=
+      propertyList.length
+      ?propertyList.map(ownerPropertyCard).join("")
+      :'<div class="card empty">You have no properties yet.</div>';
+
+    const {data:inquiries,error:inquiryError}=await db
+      .from("inquiries")
+      .select("*")
+      .eq("owner_id",currentUser.id)
+      .order("created_at",{ascending:false});
+
+    if(inquiryError)throw inquiryError;
+
+    const inquiryList=inquiries||[];
+    byId("inquiryCount").textContent=inquiryList.length;
+
+    byId("ownerInquiries").innerHTML=
+      inquiryList.length
+      ?inquiryList.map(ownerInquiryCard).join("")
+      :'<div class="empty">No enquiries yet.</div>';
+
+  }catch(error){
+    console.error("DASHBOARD ERROR:",error);
+    byId("ownerProperties").innerHTML=
+      `<div class="card empty">Could not load your account data.<br><br>${esc(error?.message)}</div>`;
+    byId("ownerInquiries").innerHTML="";
+  }
 }
 
 function ownerPropertyCard(p){
- const image=(p.property_images||[]).sort((a,b)=>(b.is_primary?1:0)-(a.is_primary?1:0)||(a.sort_order||0)-(b.sort_order||0))[0]?.image_url||fallback;
- return `<article class="card property"><img src="${esc(image)}" alt="${esc(p.title)}" onerror="this.src='${fallback}'"><div class="body"><div class="price">${money(p.price)}</div><h3>${esc(p.title)}</h3><div class="meta">${esc(p.location||"")}</div><div class="meta">${esc(p.bedrooms||0)} bedrooms • ${esc(p.bathrooms||0)} bathrooms</div></div></article>`;
+  const image=getPropertyImage(p);
+
+  return `<article class="card property">
+    <img src="${esc(image)}" alt="${esc(p.title)}" onerror="this.src='${fallback}'">
+    <div class="body">
+      <div class="price">${money(p.price)}</div>
+      <h3>${esc(p.title)}</h3>
+      <div class="meta">${esc(p.location||"")}</div>
+      <div class="meta">${esc(p.bedrooms||0)} bedrooms • ${esc(p.bathrooms||0)} bathrooms</div>
+    </div>
+  </article>`;
 }
 
 function ownerInquiryCard(i){
- return `<div class="inquiry"><strong>${esc(i.tenant_name)}</strong><div>${esc(i.tenant_phone)}</div><p>${esc(i.message||"No message")}</p><a class="btn whatsapp" target="_blank" href="${whatsappLink(i.tenant_phone)}">WhatsApp Tenant</a></div>`;
+  return `<div class="inquiry">
+    <strong>${esc(i.tenant_name)}</strong>
+    <div>${esc(i.tenant_phone)}</div>
+    <p>${esc(i.message||"No message")}</p>
+    <a class="btn whatsapp" target="_blank" href="${whatsappLink(i.tenant_phone)}">WhatsApp Tenant</a>
+  </div>`;
 }
 
 async function startApp(){
- try{
-  const {data,error}=await db.auth.getSession();
-  if(error)console.warn("Session error:",error.message);
-  currentUser=data?.session?.user||null;
-  if(currentUser)prefillOwner();
- }catch(error){console.warn("Startup error:",error)}
+  try{
+    const {data,error}=await db.auth.getSession();
+
+    if(error){
+      console.warn("Session error:",error.message);
+    }
+
+    currentUser=data?.session?.user||null;
+
+    if(currentUser){
+      prefillOwner();
+    }
+  }catch(error){
+    console.warn("Startup error:",error);
+  }
 }
 
 db.auth.onAuthStateChange((_event,session)=>{
- currentUser=session?.user||null;
- if(currentUser)prefillOwner();
+  currentUser=session?.user||null;
+
+  if(currentUser){
+    prefillOwner();
+  }
 });
 
-document.getElementById("authForm").addEventListener("submit",handleAuth);
+byId("authForm").addEventListener("submit",handleAuth);
 startApp();
 </script>
 </body>
